@@ -1,0 +1,17 @@
+{
+
+  "item.warpedmod.magic_mirror": "Magic Mirror",
+  "item.warpedmod.celestial_mirror": "Celestial Mirror",
+  "item.warpedmod.abyssal_mirror": "Abyssal Mirror",
+
+  "creativetab.warpedmod_items": "Warped",
+
+
+  "tooltip.warpedmod.magic_mirror.tooltip": "Teleports the player to their spawn point.\nCosts 1 level for every 100 blocks.",
+  "tooltip.warpedmod.magic_mirror.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point.\nCannot be used across dimensions.",
+
+  "info.warpedmod.mirrors.missing_or_invalid_spawn_point" : "You gazed into the mirror, but there was nothing on the other side...",
+  "info.warpedmod.mirrors.wrong_dimension" : "You gazed into the mirror, but you couldn't see home...",
+  "info.warpedmod.mirrors.insufficient_levels" : "You gazed into the mirror, but the reflection seemed distant..."
+
+}
