@@ -32,6 +32,14 @@ public class ModItems {
             "potion_recall_greater",
             () -> new ItemPotionRecall(true));
 
+    //Not adding these for now, because they're so inefficient and I don't know how to make them better.
+    /*public static final RegistryObject<Item> POTION_DISCORD_LESSER = ITEMS.register(
+            "potion_discord_lesser",
+            () -> new ItemPotionDiscord(500,false));
+    public static final RegistryObject<Item> POTION_DISCORD_GREATER = ITEMS.register(
+            "potion_discord_greater",
+            () -> new ItemPotionDiscord(1000,true));*/
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

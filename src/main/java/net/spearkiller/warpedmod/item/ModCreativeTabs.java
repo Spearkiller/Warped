@@ -24,6 +24,8 @@ public class ModCreativeTabs {
                         pOutput.accept(ModItems.ABYSSAL_MIRROR.get());
                         pOutput.accept(ModItems.POTION_RECALL_LESSER.get());
                         pOutput.accept(ModItems.POTION_RECALL_GREATER.get());
+                        pOutput.accept(ModItems.POTION_DISCORD_LESSER.get());
+                        pOutput.accept(ModItems.POTION_DISCORD_GREATER.get());
 
                     })
                     .build());
