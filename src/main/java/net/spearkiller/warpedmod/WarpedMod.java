@@ -1,13 +1,18 @@
 package net.spearkiller.warpedmod;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,6 +22,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.RegistryObject;
+import net.spearkiller.warpedmod.item.AbstractMirror;
 import net.spearkiller.warpedmod.item.ModCreativeTabs;
 import net.spearkiller.warpedmod.item.ModItems;
 import org.slf4j.Logger;
@@ -80,6 +86,24 @@ public class WarpedMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
 
+        }
+    }
+
+    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+    public static class ServerModEvents
+    {
+        @SubscribeEvent
+        public static void onPlayerHurt(LivingHurtEvent event) {
+            if (!(event.getEntity() instanceof ServerPlayer player)) return;
+
+            ItemStack itemInUse = player.getUseItem();
+            if (!(itemInUse.getItem() instanceof AbstractMirror)) return;
+
+            // Stop the mirror use
+            player.stopUsingItem();
+            player.displayClientMessage(Component.translatable("info.warpedmod.mirrors.use_cancelled_by_damage")
+                    .withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
         }
     }
 }
