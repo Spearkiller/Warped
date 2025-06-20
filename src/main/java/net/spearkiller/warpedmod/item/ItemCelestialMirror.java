@@ -24,8 +24,8 @@ public class ItemCelestialMirror extends AbstractMirror {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.warpedmod.magic_mirror.tooltip").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
-        pTooltipComponents.add(Component.translatable("tooltip.warpedmod.magic_mirror.tooltip_warnings").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
+        pTooltipComponents.add(Component.translatable("tooltip.warpedmod.celestial_mirror.tooltip").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
+        pTooltipComponents.add(Component.translatable("tooltip.warpedmod.celestial_mirror.tooltip_warnings").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 }

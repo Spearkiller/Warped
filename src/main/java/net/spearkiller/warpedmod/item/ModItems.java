@@ -13,15 +13,15 @@ public class ModItems {
 
     public static final RegistryObject<Item> MAGIC_MIRROR = ITEMS.register(
             "magic_mirror",
-            () -> new ItemMagicMirror(new Item.Properties(), 250, 5, false));
+            () -> new ItemMagicMirror(new Item.Properties().stacksTo(1), 250, 5, false));
 
     public static final RegistryObject<Item> CELESTIAL_MIRROR = ITEMS.register(
             "celestial_mirror",
-            () -> new ItemCelestialMirror(new Item.Properties(), 500, 3, true));
+            () -> new ItemCelestialMirror(new Item.Properties().stacksTo(1), 500, 3, true));
 
     public static final RegistryObject<Item> ABYSSAL_MIRROR = ITEMS.register(
             "abyssal_mirror",
-            () -> new ItemAbyssalMirror(new Item.Properties(), 0, 0, true));
+            () -> new ItemAbyssalMirror(new Item.Properties().stacksTo(1), 0, 0, true));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

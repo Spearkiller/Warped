@@ -7,11 +7,11 @@
   "creativetab.warpedmod_items": "Warped",
 
 
-  "tooltip.warpedmod.magic_mirror.tooltip": "Teleports the player to their spawn point\nCosts 1 level for every 250 blocks",
+  "tooltip.warpedmod.magic_mirror.tooltip": "Teleports the player to their spawn point\nCosts 1 level for every 250 blocks, max of 5 levels",
   "tooltip.warpedmod.magic_mirror.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point\nCannot be used across dimensions",
 
-  "tooltip.warpedmod.celestial_mirror.tooltip": "Teleports the player to their spawn point\nCosts 1 level for every 500 blocks\nCosts 3 levels for travelling across dimensions",
-  "tooltip.warpedmod.celestial.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point",
+  "tooltip.warpedmod.celestial_mirror.tooltip": "Teleports the player to their spawn point\nCosts 1 level for every 500 blocks, max of 3 levels\nCosts 3 levels for travelling across dimensions",
+  "tooltip.warpedmod.celestial_mirror.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point",
 
   "tooltip.warpedmod.abyssal_mirror.tooltip": "Teleports the player to their spawn point\nCosts no XP to use",
   "tooltip.warpedmod.abyssal_mirror.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point",
