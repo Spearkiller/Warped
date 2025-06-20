@@ -19,6 +19,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -32,17 +33,19 @@ import java.util.logging.Logger;
 public abstract class AbstractMirror extends Item {
 
     public static final int USE_DURATION = 60;
-    public final float BLOCKS_PER_XP_LEVEL;
     public final boolean ALLOW_CROSS_DIMENSIONAL_TRAVEL;
     public final ParticleOptions DUST_TYPE;
-    public final int MAX_COST;
 
-    public AbstractMirror(Properties pProperties, int blocksPerLevel, int max_cost, boolean allowCrossDimensions, ParticleOptions dust){
+    public final GameRules.Key<GameRules.IntegerValue> COST_RULE;
+    public final GameRules.Key<GameRules.IntegerValue> MAX_COST_RULE;
+
+    public AbstractMirror(Properties pProperties, boolean allowCrossDimensions, ParticleOptions dust, GameRules.Key<GameRules.IntegerValue> costRule, GameRules.Key<GameRules.IntegerValue> maxCostRule){
         super(pProperties);
-        BLOCKS_PER_XP_LEVEL = blocksPerLevel;
         ALLOW_CROSS_DIMENSIONAL_TRAVEL = allowCrossDimensions;
         DUST_TYPE = dust;
-        MAX_COST = max_cost;
+
+        COST_RULE = costRule;
+        MAX_COST_RULE = maxCostRule;
     }
 
     // ------------------------------------------------------
@@ -157,18 +160,33 @@ public abstract class AbstractMirror extends Item {
         }
         Vec3 trueSpawnPosition = safeSpawn.get();
 
+        //This feels dirty but I cannot think of a better way. I also kinda can't be bothered (It's very late rn!)
+        int maxCost;
+        if (MAX_COST_RULE == null)
+            maxCost = 0;
+        else
+            maxCost = Math.max(player.level().getGameRules().getRule(MAX_COST_RULE).get(), 0);
+
+
+        int blocksPerLevel;
+        if (COST_RULE == null)
+            blocksPerLevel = 0;
+        else
+            blocksPerLevel = Math.max(player.level().getGameRules().getRule(COST_RULE).get(), 0);
+
+
         //Work out XP cost and check - Unless the player is in creative
-        if (!player.gameMode.getGameModeForPlayer().equals(GameType.CREATIVE) && BLOCKS_PER_XP_LEVEL > 0) {
+        if (!player.gameMode.getGameModeForPlayer().equals(GameType.CREATIVE) && blocksPerLevel > 0) {
             int levelCost = 0;
 
             //Check for cross-dimensional travel
             if (!spawnDimension.equals(sLevel.dimension()) && ALLOW_CROSS_DIMENSIONAL_TRAVEL) {
-                levelCost = MAX_COST;
+                levelCost = maxCost;
             }
 
-            else {
+            else if (blocksPerLevel > 0 && maxCost > 0) {
                 double distanceFromSpawn = player.position().distanceToSqr(trueSpawnPosition);
-                levelCost = (int) Math.min(Math.floor(distanceFromSpawn / Math.pow(BLOCKS_PER_XP_LEVEL, 2)), MAX_COST);
+                levelCost = (int) Math.min(Math.floor(distanceFromSpawn / Math.pow(blocksPerLevel, 2)), maxCost);
                 if (player.experienceLevel < levelCost) {
                     player.displayClientMessage(Component.translatable("info.warpedmod.mirrors.insufficient_levels").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
                     return null;

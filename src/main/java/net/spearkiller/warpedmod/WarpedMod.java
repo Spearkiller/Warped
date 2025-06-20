@@ -9,6 +9,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.GameRules;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -34,6 +35,19 @@ public class WarpedMod
     public static final String MOD_ID = "warpedmod";
     private static final Logger LOGGER = LogUtils.getLogger();
 
+
+    //Add the gamerules here I guess?
+    public static final  GameRules.Key<GameRules.IntegerValue> MAGIC_MIRROR_BLOCKS_PER_LEVEL_COST =
+            GameRules.register("magicMirrorBlocksPerLevel", GameRules.Category.PLAYER, GameRules.IntegerValue.create(250));
+    public static final  GameRules.Key<GameRules.IntegerValue> MAGIC_MIRROR_MAX_LEVEL_COST =
+            GameRules.register("magicMirrorMaxLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(5));
+    public static final  GameRules.Key<GameRules.IntegerValue> CELESTIAL_MIRROR_BLOCKS_PER_LEVEL_COST =
+            GameRules.register("celestialMirrorBlocksPerLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(500));
+    public static final  GameRules.Key<GameRules.IntegerValue> CELESTIAL_MIRROR_MAX_LEVEL_COST =
+            GameRules.register("celestialMirrorMaxLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(3));
+
+
+
     public WarpedMod(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
@@ -51,6 +65,7 @@ public class WarpedMod
         modEventBus.addListener(this::addCreative);
 
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -75,6 +90,7 @@ public class WarpedMod
     private void addItemToCreativeTab(BuildCreativeModeTabContentsEvent event, ResourceKey<CreativeModeTab> tab, RegistryObject<Item> item) {
         if(event.getTabKey() == tab) event.accept(item);
     }
+
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
@@ -110,5 +126,10 @@ public class WarpedMod
             player.displayClientMessage(Component.translatable("info.warpedmod.mirrors.use_cancelled_by_damage")
                     .withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
         }
+    }
+
+    public static String getPlural(int amount, String singular, String plural){
+        if (amount == 1) return singular;
+        return plural;
     }
 }
