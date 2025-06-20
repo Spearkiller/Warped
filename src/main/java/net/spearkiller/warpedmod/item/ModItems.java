@@ -23,6 +23,15 @@ public class ModItems {
             "abyssal_mirror",
             () -> new ItemAbyssalMirror(new Item.Properties().stacksTo(1), 0, 0, true));
 
+
+
+    public static final RegistryObject<Item> POTION_RECALL_LESSER = ITEMS.register(
+            "potion_recall_lesser",
+            () -> new ItemPotionRecall(false));
+    public static final RegistryObject<Item> POTION_RECALL_GREATER = ITEMS.register(
+            "potion_recall_greater",
+            () -> new ItemPotionRecall(true));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

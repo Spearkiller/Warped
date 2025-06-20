@@ -22,6 +22,8 @@ public class ModCreativeTabs {
                         pOutput.accept(ModItems.MAGIC_MIRROR.get());
                         pOutput.accept(ModItems.CELESTIAL_MIRROR.get());
                         pOutput.accept(ModItems.ABYSSAL_MIRROR.get());
+                        pOutput.accept(ModItems.POTION_RECALL_LESSER.get());
+                        pOutput.accept(ModItems.POTION_RECALL_GREATER.get());
 
                     })
                     .build());

@@ -127,10 +127,6 @@ public abstract class AbstractMirror extends Item {
         float spawnAngle = player.getRespawnAngle();
         ResourceKey<Level> spawnDimension = player.getRespawnDimension();
 
-        Logger.getLogger("warpedmod").info("Player spawn pos: " + spawnPos);
-        Logger.getLogger("warpedmod").info("Spawn dimension: " + spawnDimension);
-        Logger.getLogger("warpedmod").info("Current dimension: " + sLevel.dimension());
-
         //Check that the player has set their spawnpoint at least once.
         if (spawnPos == null) {
             // Never set a spawn
@@ -185,7 +181,7 @@ public abstract class AbstractMirror extends Item {
         return trueSpawnPosition;
     }
 
-    protected final void trySpawnParticles(Level level, LivingEntity entity, ParticleOptions particles, int particleCount, boolean force){
+    public static void trySpawnParticles(Level level, LivingEntity entity, ParticleOptions particles, int particleCount, boolean force){
         if (!(entity instanceof ServerPlayer player) || !(level instanceof ServerLevel sLevel)) return;
 
         sLevel.sendParticles( player, particles, force,player.getX(), player.getY() + 1, player.getZ(),particleCount, 0.5, 0.5, 0.5,0.1 );

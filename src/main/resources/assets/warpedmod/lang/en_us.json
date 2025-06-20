@@ -4,6 +4,9 @@
   "item.warpedmod.celestial_mirror": "Celestial Mirror",
   "item.warpedmod.abyssal_mirror": "Abyssal Mirror",
 
+  "item.warpedmod.potion_recall_lesser": "Recall Potion",
+  "item.warpedmod.potion_recall_greater": "Greater Recall Potion",
+
   "creativetab.warpedmod_items": "Warped",
 
 
@@ -15,6 +18,13 @@
 
   "tooltip.warpedmod.abyssal_mirror.tooltip": "Teleports the player to their spawn point\nCosts no XP to use",
   "tooltip.warpedmod.abyssal_mirror.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point",
+
+
+  "info.warpedmod.recall_potion.missing_or_invalid_spawn_point": "You tried to remember where home was, but you couldn't quite place it...",
+  "info.warpedmod.recall_potion.wrong_dimension": "You tried to remember home, but it seemed too far away...",
+  "tooltip.warpedmod.recall_potion.tooltip_info": "Teleports the player to their spawn point",
+  "tooltip.warpedmod.recall_potion.tooltip_lesser_warnings": "Does not work across dimensions",
+  "tooltip.warpedmod.recall_potion.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point",
 
 
   "info.warpedmod.mirrors.missing_or_invalid_spawn_point" : "You gazed into the mirror, but there was nothing on the other side...",
