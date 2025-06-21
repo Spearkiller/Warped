@@ -7,17 +7,22 @@ import net.minecraft.world.level.block.entity.BeaconBlockEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
 import net.spearkiller.warpedmod.WarpedMod;
+import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+@Debug(export=true)
 @Mixin(BeaconBlockEntity.class)
 public class BeaconBlockEntityMixin {
 
     @Inject(method = "tick", at = @At("TAIL"))
     private static void warpedmod$trackPlayersNearby(Level pLevel, BlockPos pPos, BlockState pState, BeaconBlockEntity pBlockEntity, CallbackInfo ci) {
+
+        WarpedMod.getLogger().info("Ticking beacon " + pBlockEntity.toString());
+        System.out.println("Ticking");
 
         int beaconLevel = warped$getBeaconLevel(pBlockEntity);
         if (beaconLevel <= 0) return;
@@ -35,8 +40,6 @@ public class BeaconBlockEntityMixin {
                 WarpedMod.getLogger().info("Checked if " + player + " was in range. Was not. Sucks to suck.");
             System.out.println("Out of range");
         }
-        WarpedMod.getLogger().info("Ticking beacon " + pBlockEntity.toString());
-        System.out.println("Ticking");
     }
 
     @Unique
