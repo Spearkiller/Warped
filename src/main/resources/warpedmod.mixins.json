@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "warpedmod.mixins.refmap.json",
   "mixins": [
+    "BeaconBlockEntityAccessor",
     "BeaconBlockEntityMixin"
   ],
   "injectors": {

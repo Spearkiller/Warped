@@ -10,6 +10,7 @@ import net.spearkiller.warpedmod.WarpedMod;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
+import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -17,6 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Debug(export=true)
 @Mixin(BeaconBlockEntity.class)
 public class BeaconBlockEntityMixin {
+
 
     @Inject(method = "tick", at = @At("TAIL"))
     private static void warpedmod$trackPlayersNearby(Level pLevel, BlockPos pPos, BlockState pState, BeaconBlockEntity pBlockEntity, CallbackInfo ci) {
@@ -32,20 +34,19 @@ public class BeaconBlockEntityMixin {
             if (player.blockPosition().closerThan(pPos, range)) {
 
                 //If player has a flight ring, grant them flight
-
-                System.out.println("Granting flight");
                 WarpedMod.BeaconFlightTracker.playersInBeaconRange.put(player.getUUID(), player.tickCount);
+                WarpedMod.getLogger().info(player + " is in range.");
             }
-            else
+            else {
                 WarpedMod.getLogger().info("Checked if " + player + " was in range. Was not. Sucks to suck.");
-            System.out.println("Out of range");
+            }
         }
     }
 
     @Unique
     private static int warped$getBeaconLevel(BeaconBlockEntity b){
         try{
-            ContainerData cd = (ContainerData) BeaconBlockEntity.class.getDeclaredField("dataAccess").get(b);
+            ContainerData cd = ((BeaconBlockEntityAccessor) b).warpedmod$getDataAccess();
             return cd.get(0);
 
         } catch (Exception e){
