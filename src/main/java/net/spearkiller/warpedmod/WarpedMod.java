@@ -5,6 +5,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
@@ -13,6 +14,7 @@ import net.minecraft.world.level.GameRules;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -24,13 +26,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.RegistryObject;
 import net.spearkiller.warpedmod.item.AbstractMirror;
+import net.spearkiller.warpedmod.item.ItemFlightRing;
 import net.spearkiller.warpedmod.item.ModCreativeTabs;
 import net.spearkiller.warpedmod.item.ModItems;
 import org.slf4j.Logger;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(WarpedMod.MOD_ID)
@@ -49,6 +50,8 @@ public class WarpedMod
             GameRules.register("celestialMirrorBlocksPerLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(500));
     public static final  GameRules.Key<GameRules.IntegerValue> CELESTIAL_MIRROR_MAX_LEVEL_COST =
             GameRules.register("celestialMirrorMaxLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(3));
+    public static final  GameRules.Key<GameRules.IntegerValue> FLIGHT_RING_RANGE_MULT =
+            GameRules.register("flightRingRangeMult", GameRules.Category.PLAYER, GameRules.IntegerValue.create(100));
 
 
 
@@ -121,6 +124,8 @@ public class WarpedMod
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
     public static class ServerModEvents
     {
+
+        //Stop the player from using mirrors when getting hurt
         @SubscribeEvent
         public static void onPlayerHurt(LivingHurtEvent event) {
             if (!(event.getEntity() instanceof ServerPlayer player)) return;
@@ -133,14 +138,36 @@ public class WarpedMod
             player.displayClientMessage(Component.translatable("info.warpedmod.mirrors.use_cancelled_by_damage")
                     .withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
         }
+
+        //Logic to determine if the player should be able to fly using beacon ring
+        @SubscribeEvent
+        public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+            Player player = event.player;
+
+            //WarpedMod.getLogger().debug("Ticking " + player);
+
+            if (player.level().isClientSide()) return;
+            //WarpedMod.getLogger().debug("Level is not clientside");
+
+            if (event.phase != TickEvent.Phase.END) return;
+            //WarpedMod.getLogger().debug("Tick is during end phase");
+
+            if (!(player instanceof ServerPlayer sPlayer)) return;
+            //WarpedMod.getLogger().debug("Player is server player");
+
+            ItemFlightRing.updateFlightStatus(sPlayer);
+        }
+
+
     }
 
     public static Logger getLogger(){
         return LOGGER;
     }
 
-    public class BeaconFlightTracker {
+    public static class BeaconFlightTracker {
         public static final Map<UUID, Integer> playersInBeaconRange = new HashMap<>();
+        public static final Set<UUID> flightEnabledPlayers = new HashSet<>();
         public static final int GRACE_PERIOD_TICKS = 100;
 
         public static boolean isPlayerInRange(ServerPlayer player) {

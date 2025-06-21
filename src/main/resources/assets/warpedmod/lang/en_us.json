@@ -38,6 +38,8 @@
   "info.warpedmod.mirrors.missing_or_invalid_spawn_point" : "You gazed into the mirror, but there was nothing on the other side...",
   "info.warpedmod.mirrors.wrong_dimension" : "You gazed into the mirror, but you couldn't see home...",
   "info.warpedmod.mirrors.insufficient_levels" : "You gazed into the mirror, but the reflection seemed distant...",
-  "info.warpedmod.mirrors.use_cancelled_by_damage": "You gazed into the mirror, but your focus was interrupted!"
+  "info.warpedmod.mirrors.use_cancelled_by_damage": "You gazed into the mirror, but your focus was interrupted!",
+  "tooltip.warpedmod.item_flight_ring.info": "Grants the player flight when within range of a beacon",
+  "tooltip.warpedmod.item_flight_ring.info2": "Higher level beacons have a greater range"
 
 }

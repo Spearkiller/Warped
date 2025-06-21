@@ -23,22 +23,26 @@ public class BeaconBlockEntityMixin {
     @Inject(method = "tick", at = @At("TAIL"))
     private static void warpedmod$trackPlayersNearby(Level pLevel, BlockPos pPos, BlockState pState, BeaconBlockEntity pBlockEntity, CallbackInfo ci) {
 
-        WarpedMod.getLogger().info("Ticking beacon " + pBlockEntity.toString());
-        System.out.println("Ticking");
+        //WarpedMod.getLogger().info("Ticking beacon " + pBlockEntity.toString());
 
         int beaconLevel = warped$getBeaconLevel(pBlockEntity);
         if (beaconLevel <= 0) return;
 
-        int range = 10 + (beaconLevel*10);
+        float rangeMod = (float)Math.max(pLevel.getGameRules().getRule(WarpedMod.FLIGHT_RING_RANGE_MULT).get(), 0) /100;
+
+        int range = (int)(10 + ((beaconLevel*10)) * rangeMod);
+
         for (Player player : pLevel.players()) {
             if (player.blockPosition().closerThan(pPos, range)) {
 
                 //If player has a flight ring, grant them flight
                 WarpedMod.BeaconFlightTracker.playersInBeaconRange.put(player.getUUID(), player.tickCount);
-                WarpedMod.getLogger().info(player + " is in range.");
+
+
+                //WarpedMod.getLogger().info(player + " is in range.");
             }
             else {
-                WarpedMod.getLogger().info("Checked if " + player + " was in range. Was not. Sucks to suck.");
+                //WarpedMod.getLogger().info("Checked if " + player + " was in range. Was not. Sucks to suck.");
             }
         }
     }
