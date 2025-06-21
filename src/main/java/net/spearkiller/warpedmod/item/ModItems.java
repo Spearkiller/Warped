@@ -40,9 +40,12 @@ public class ModItems {
             "potion_discord_greater",
             () -> new ItemPotionDiscord(1000,true));*/
 
-    public static final RegistryObject<Item> FLIGHT_RING = ITEMS.register(
-            "flight_ring",
-            () -> new ItemFlightRing(new Item.Properties()));
+    public static final RegistryObject<Item> WITHERED_TOTEM = ITEMS.register(
+            "withered_totem",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TOTEM_OF_ASCENSION = ITEMS.register(
+            "totem_of_ascension",
+            () -> new ItemTotemOfAscension(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

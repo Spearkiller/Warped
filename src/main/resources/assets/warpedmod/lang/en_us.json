@@ -6,7 +6,8 @@
 
   "item.warpedmod.potion_recall_lesser": "Recall Potion",
   "item.warpedmod.potion_recall_greater": "Greater Recall Potion",
-  "item.warpedmod.flight_ring": "Flight Ring",
+  "item.warpedmod.totem_of_ascension": "Totem of Ascension",
+  "item.warpedmod.withered_totem": "Withered Totem",
 
   "creativetab.warpedmod_items": "Warped",
 
@@ -25,21 +26,22 @@
   "tooltip.warpedmod.abyssal_mirror.tooltip2": "Costs no XP to use",
   "tooltip.warpedmod.abyssal_mirror.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point",
 
-
-  "info.warpedmod.potion_recall.missing_or_invalid_spawn_point": "You tried to remember where home was, but you couldn't quite place it...",
-  "info.warpedmod.potion_recall.wrong_dimension": "You tried to remember home, but it seemed too far away...",
   "tooltip.warpedmod.potion_recall.tooltip_info": "Teleports the player to their spawn point",
   "tooltip.warpedmod.potion_recall.tooltip_lesser_warnings": "Does not work across dimensions",
   "tooltip.warpedmod.potion_recall.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point",
 
-  "info.warpedmod.potion_discord.failed_tp": "You braced yourself, but nothing happened...?",
+  "tooltip.warpedmod.item_totem_of_ascension.info": "Grants the player flight when within range of a beacon",
+  "tooltip.warpedmod.item_totem_of_ascension.info2": "Higher level beacons have a greater range",
 
+
+  "info.warpedmod.potion_recall.missing_or_invalid_spawn_point": "You tried to remember where home was, but you couldn't quite place it...",
+  "info.warpedmod.potion_recall.wrong_dimension": "You tried to remember home, but it seemed too far away...",
+
+  "info.warpedmod.potion_discord.failed_tp": "You braced yourself, but nothing happened...?",
 
   "info.warpedmod.mirrors.missing_or_invalid_spawn_point" : "You gazed into the mirror, but there was nothing on the other side...",
   "info.warpedmod.mirrors.wrong_dimension" : "You gazed into the mirror, but you couldn't see home...",
   "info.warpedmod.mirrors.insufficient_levels" : "You gazed into the mirror, but the reflection seemed distant...",
-  "info.warpedmod.mirrors.use_cancelled_by_damage": "You gazed into the mirror, but your focus was interrupted!",
-  "tooltip.warpedmod.item_flight_ring.info": "Grants the player flight when within range of a beacon",
-  "tooltip.warpedmod.item_flight_ring.info2": "Higher level beacons have a greater range"
+  "info.warpedmod.mirrors.use_cancelled_by_damage": "You gazed into the mirror, but your focus was interrupted!"
 
 }

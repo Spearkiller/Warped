@@ -13,26 +13,25 @@ import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
 import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
-import top.theillusivec4.curios.api.type.inventory.IDynamicStackHandler;
 
 import java.util.List;
 import java.util.Optional;
 
-public class ItemFlightRing extends Item implements ICurioItem {
+public class ItemTotemOfAscension extends Item implements ICurioItem {
 
-    public ItemFlightRing(Properties pProperties) {
+    public ItemTotemOfAscension(Properties pProperties) {
         super(pProperties.stacksTo(1));
     }
 
     @Override
     public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        return slotContext.identifier().equals("ring");
+        return slotContext.identifier().equals("charm");
     }
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.warpedmod.item_flight_ring.info").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
-        pTooltipComponents.add(Component.translatable("tooltip.warpedmod.item_flight_ring.info2").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
+        pTooltipComponents.add(Component.translatable("tooltip.warpedmod.item_totem_of_ascension.info").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
+        pTooltipComponents.add(Component.translatable("tooltip.warpedmod.item_totem_of_ascension.info2").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 
@@ -42,12 +41,12 @@ public class ItemFlightRing extends Item implements ICurioItem {
 
         //WarpedMod.getLogger().debug("Checking " + player + " for beacon flight");
 
-        boolean hasRing = isEquipped(player);
+        boolean hasTotem = isEquipped(player);
         //WarpedMod.getLogger().debug("Equipped ring: " + hasRing);
         boolean inBeaconRange = WarpedMod.BeaconFlightTracker.isPlayerInRange(player);
         //WarpedMod.getLogger().debug("In range: " + inBeaconRange);
 
-        boolean shouldHaveFlight = hasRing && inBeaconRange;
+        boolean shouldHaveFlight = hasTotem && inBeaconRange;
 
         if (shouldHaveFlight) {
             if (!player.getAbilities().mayfly) {
@@ -77,6 +76,6 @@ public class ItemFlightRing extends Item implements ICurioItem {
         //Yes this can be simplified but the simplified version of the code is scawy
         if (curios.isEmpty()) return false;
 
-        return curios.get().findFirstCurio(stack -> stack.getItem() instanceof ItemFlightRing).isPresent();
+        return curios.get().findFirstCurio(stack -> stack.getItem() instanceof ItemTotemOfAscension).isPresent();
     }
 }

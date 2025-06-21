@@ -26,7 +26,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.RegistryObject;
 import net.spearkiller.warpedmod.item.AbstractMirror;
-import net.spearkiller.warpedmod.item.ItemFlightRing;
+import net.spearkiller.warpedmod.item.ItemTotemOfAscension;
 import net.spearkiller.warpedmod.item.ModCreativeTabs;
 import net.spearkiller.warpedmod.item.ModItems;
 import org.slf4j.Logger;
@@ -50,7 +50,7 @@ public class WarpedMod
             GameRules.register("celestialMirrorBlocksPerLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(500));
     public static final  GameRules.Key<GameRules.IntegerValue> CELESTIAL_MIRROR_MAX_LEVEL_COST =
             GameRules.register("celestialMirrorMaxLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(3));
-    public static final  GameRules.Key<GameRules.IntegerValue> FLIGHT_RING_RANGE_MULT =
+    public static final  GameRules.Key<GameRules.IntegerValue> FLIGHT_TOTEM_RANGE_MULT =
             GameRules.register("flightRingRangeMult", GameRules.Category.PLAYER, GameRules.IntegerValue.create(100));
 
 
@@ -88,7 +88,7 @@ public class WarpedMod
         addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.MAGIC_MIRROR);
         addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.CELESTIAL_MIRROR);
         addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.ABYSSAL_MIRROR);
-        addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.FLIGHT_RING);
+        addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.TOTEM_OF_ASCENSION);
 
         addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_RECALL_LESSER);
         addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_RECALL_GREATER);
@@ -155,7 +155,7 @@ public class WarpedMod
             if (!(player instanceof ServerPlayer sPlayer)) return;
             //WarpedMod.getLogger().debug("Player is server player");
 
-            ItemFlightRing.updateFlightStatus(sPlayer);
+            ItemTotemOfAscension.updateFlightStatus(sPlayer);
         }
 
 

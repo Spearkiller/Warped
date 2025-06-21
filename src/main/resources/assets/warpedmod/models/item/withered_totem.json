@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "warpedmod:item/flight_ring"
+    "layer0": "warpedmod:item/withered_totem"
   }
 }

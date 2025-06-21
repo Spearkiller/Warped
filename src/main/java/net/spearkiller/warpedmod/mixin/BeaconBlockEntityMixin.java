@@ -9,8 +9,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.spearkiller.warpedmod.WarpedMod;
 import org.spongepowered.asm.mixin.Debug;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -34,7 +32,7 @@ public class BeaconBlockEntityMixin {
 
         if (beaconLevel <= 0) return;
 
-        double rangeMod = (float)Math.max(pLevel.getGameRules().getRule(WarpedMod.FLIGHT_RING_RANGE_MULT).get(), 0) /100;
+        double rangeMod = (float)Math.max(pLevel.getGameRules().getRule(WarpedMod.FLIGHT_TOTEM_RANGE_MULT).get(), 0) /100;
 
         int range = (int)((10 + (beaconLevel*10)) * rangeMod);
         //WarpedMod.getLogger().debug("Flight range: " + range);
