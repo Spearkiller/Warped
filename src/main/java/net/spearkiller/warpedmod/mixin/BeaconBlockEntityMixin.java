@@ -25,9 +25,13 @@ public class BeaconBlockEntityMixin {
 
         if (pLevel.isClientSide()) return;
 
+        int beaconLevel = 0;
         //WarpedMod.getLogger().info("Ticking beacon " + pBlockEntity.toString());
+        if (pBlockEntity instanceof BeaconBlockEntityAccessor accessor) {
+            ContainerData data = accessor.warpedmod$getDataAccess();
+            beaconLevel = data.get(0);
+        }
 
-        int beaconLevel = warped$getBeaconLevel(pBlockEntity);
         if (beaconLevel <= 0) return;
 
         double rangeMod = (float)Math.max(pLevel.getGameRules().getRule(WarpedMod.FLIGHT_RING_RANGE_MULT).get(), 0) /100;
@@ -56,18 +60,4 @@ public class BeaconBlockEntityMixin {
             }
         }
     }
-
-    @Unique
-    private static int warped$getBeaconLevel(BeaconBlockEntity b){
-        try{
-            ContainerData cd = ((BeaconBlockEntityAccessor) b).warpedmod$getDataAccess();
-            return cd.get(0);
-
-        } catch (Exception e){
-            WarpedMod.getLogger().error("An error has occurred when trying to access container data of beacon " + b.toString());
-            WarpedMod.getLogger().error(e.getMessage());
-            return -1;
-        }
-    }
-
 }
