@@ -16,6 +16,7 @@ import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 public class ItemTotemOfAscension extends Item implements ICurioItem {
 
@@ -73,9 +74,21 @@ public class ItemTotemOfAscension extends Item implements ICurioItem {
 
     public static boolean isEquipped(ServerPlayer player){
         Optional<ICuriosItemHandler> curios = CuriosApi.getCuriosInventory(player).resolve();
-        //Yes this can be simplified but the simplified version of the code is scawy
+
         if (curios.isEmpty()) return false;
 
-        return curios.get().findFirstCurio(stack -> stack.getItem() instanceof ItemTotemOfAscension).isPresent();
+        if (curios.get().findFirstCurio(stack -> stack.getItem() instanceof ItemTotemOfAscension).isPresent())
+            return true;
+
+        if (player.getOffhandItem().getItem() instanceof  ItemTotemOfAscension)
+            return true;
+
+        for (int i = 0; i < 9; i++) {
+            ItemStack stack = player.getInventory().getItem(i);
+            if (stack.getItem() instanceof ItemTotemOfAscension)
+                return true;
+        }
+
+        return false;
     }
 }
