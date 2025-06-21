@@ -90,7 +90,7 @@ public abstract class AbstractMirror extends Item {
         trySpawnParticles(level, entity, DUST_TYPE, 60, true);
         trySpawnParticles(level, entity, ParticleTypes.END_ROD, 30, true);
 
-        level.playSound(null, player.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.75f, 1.5f);
+        level.playSound(null, player.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.25f, 1.5f);
 
         player.getCooldowns().addCooldown(this, 40);
         return stack;
@@ -161,6 +161,7 @@ public abstract class AbstractMirror extends Item {
         Vec3 trueSpawnPosition = safeSpawn.get();
 
         //This feels dirty but I cannot think of a better way. I also kinda can't be bothered (It's very late rn!)
+        //The clown that is me doing all this and it doesn't actually work :clown:
         int maxCost;
         if (MAX_COST_RULE == null)
             maxCost = 0;

@@ -80,7 +80,7 @@ public class ItemPotionRecall extends Item {
         player.teleportTo(targetDimension, homeCoords.x(), homeCoords.y() + 0.1, homeCoords.z(), spawnAngle, 0f);
 
         AbstractMirror.trySpawnParticles(level, entity, ParticleTypes.END_ROD, 30, true);
-        level.playSound(null, player.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.75f, 1.5f);
+        level.playSound(null, player.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.25f, 1.5f);
 
         if (!player.gameMode.getGameModeForPlayer().equals(GameType.CREATIVE)) {
             return new ItemStack(Items.GLASS_BOTTLE);

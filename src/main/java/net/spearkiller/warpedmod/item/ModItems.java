@@ -40,6 +40,10 @@ public class ModItems {
             "potion_discord_greater",
             () -> new ItemPotionDiscord(1000,true));*/
 
+    public static final RegistryObject<Item> FLIGHT_RING = ITEMS.register(
+            "flight_ring",
+            () -> new ItemFlightRing(new Item.Properties()));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

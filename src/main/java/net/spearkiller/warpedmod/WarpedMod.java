@@ -28,6 +28,10 @@ import net.spearkiller.warpedmod.item.ModCreativeTabs;
 import net.spearkiller.warpedmod.item.ModItems;
 import org.slf4j.Logger;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(WarpedMod.MOD_ID)
 public class WarpedMod
@@ -66,6 +70,8 @@ public class WarpedMod
 
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
+        WarpedMod.getLogger().info("WarpedMod loaded!");
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -79,6 +85,7 @@ public class WarpedMod
         addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.MAGIC_MIRROR);
         addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.CELESTIAL_MIRROR);
         addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.ABYSSAL_MIRROR);
+        addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.FLIGHT_RING);
 
         addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_RECALL_LESSER);
         addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_RECALL_GREATER);
@@ -125,6 +132,20 @@ public class WarpedMod
             player.stopUsingItem();
             player.displayClientMessage(Component.translatable("info.warpedmod.mirrors.use_cancelled_by_damage")
                     .withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
+        }
+    }
+
+    public static Logger getLogger(){
+        return LOGGER;
+    }
+
+    public class BeaconFlightTracker {
+        public static final Map<UUID, Integer> playersInBeaconRange = new HashMap<>();
+        public static final int GRACE_PERIOD_TICKS = 100;
+
+        public static boolean isPlayerInRange(ServerPlayer player) {
+            Integer lastSeen = playersInBeaconRange.get(player.getUUID());
+            return lastSeen != null && player.tickCount - lastSeen < GRACE_PERIOD_TICKS;
         }
     }
 
