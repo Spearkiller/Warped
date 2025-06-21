@@ -23,14 +23,17 @@ public class BeaconBlockEntityMixin {
     @Inject(method = "tick", at = @At("TAIL"))
     private static void warpedmod$trackPlayersNearby(Level pLevel, BlockPos pPos, BlockState pState, BeaconBlockEntity pBlockEntity, CallbackInfo ci) {
 
+        if (pLevel.isClientSide()) return;
+
         //WarpedMod.getLogger().info("Ticking beacon " + pBlockEntity.toString());
 
         int beaconLevel = warped$getBeaconLevel(pBlockEntity);
         if (beaconLevel <= 0) return;
 
-        float rangeMod = (float)Math.max(pLevel.getGameRules().getRule(WarpedMod.FLIGHT_RING_RANGE_MULT).get(), 0) /100;
+        double rangeMod = (float)Math.max(pLevel.getGameRules().getRule(WarpedMod.FLIGHT_RING_RANGE_MULT).get(), 0) /100;
 
-        int range = (int)(10 + ((beaconLevel*10)) * rangeMod);
+        int range = (int)((10 + (beaconLevel*10)) * rangeMod);
+        WarpedMod.getLogger().debug("Flight range: " + range);
 
         for (Player player : pLevel.players()) {
             if (player.blockPosition().closerThan(pPos, range)) {
