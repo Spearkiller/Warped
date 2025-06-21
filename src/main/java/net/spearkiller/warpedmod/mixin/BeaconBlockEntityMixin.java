@@ -33,10 +33,17 @@ public class BeaconBlockEntityMixin {
         double rangeMod = (float)Math.max(pLevel.getGameRules().getRule(WarpedMod.FLIGHT_RING_RANGE_MULT).get(), 0) /100;
 
         int range = (int)((10 + (beaconLevel*10)) * rangeMod);
-        WarpedMod.getLogger().debug("Flight range: " + range);
+        //WarpedMod.getLogger().debug("Flight range: " + range);
 
         for (Player player : pLevel.players()) {
-            if (player.blockPosition().closerThan(pPos, range)) {
+
+            //Check for distance on the flat.
+            float xDist = player.blockPosition().getX() - pPos.getX();
+            float zDist = player.blockPosition().getZ() - pPos.getZ();
+
+            float dist = (xDist * xDist) + (zDist * zDist);
+
+            if (dist <= (range*range)) {
 
                 //If player has a flight ring, grant them flight
                 WarpedMod.BeaconFlightTracker.playersInBeaconRange.put(player.getUUID(), player.tickCount);
