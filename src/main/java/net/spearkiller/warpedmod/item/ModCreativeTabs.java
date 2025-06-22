@@ -22,9 +22,12 @@ public class ModCreativeTabs {
                         pOutput.accept(ModItems.MAGIC_MIRROR.get());
                         pOutput.accept(ModItems.CELESTIAL_MIRROR.get());
                         pOutput.accept(ModItems.ABYSSAL_MIRROR.get());
+                        pOutput.accept(ModItems.WITHERED_TOTEM.get());
                         pOutput.accept(ModItems.TOTEM_OF_ASCENSION.get());
                         pOutput.accept(ModItems.POTION_RECALL_LESSER.get());
                         pOutput.accept(ModItems.POTION_RECALL_GREATER.get());
+                        pOutput.accept(ModItems.POTION_REUNION_LESSER.get());
+                        pOutput.accept(ModItems.POTION_REUNION_GREATER.get());
                         //pOutput.accept(ModItems.POTION_DISCORD_LESSER.get());
                         //pOutput.accept(ModItems.POTION_DISCORD_GREATER.get());
 
