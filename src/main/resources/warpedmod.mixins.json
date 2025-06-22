@@ -1,8 +1,9 @@
 {
   "required": true,
+  "minVersion": "0.8",
   "package": "net.spearkiller.warpedmod.mixin",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "warpedmod.mixins.refmap.json",
+  "refmap": "mixins.warpedmod.refmap.json",
   "mixins": [
     "BeaconBlockEntityAccessor",
     "BeaconBlockEntityMixin"
