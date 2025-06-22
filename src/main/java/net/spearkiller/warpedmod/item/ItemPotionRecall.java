@@ -29,11 +29,11 @@ public class ItemPotionRecall extends Item {
 
     public ItemPotionRecall(boolean enhanced) {
         super(new Properties()
-                .stacksTo(16)
+                .stacksTo(1)
                 .food(new FoodProperties.Builder()
                         .alwaysEat()
-                .build()));
-        ENHANCED_POTION = enhanced;
+                        .build()));
+        this.ENHANCED_POTION = enhanced;
     }
 
     // ------------------------------------------------------
@@ -42,7 +42,7 @@ public class ItemPotionRecall extends Item {
 
     @Override
     public boolean isFoil(ItemStack stack) {
-        return ENHANCED_POTION;
+        return this.ENHANCED_POTION;
     }
 
     @Override

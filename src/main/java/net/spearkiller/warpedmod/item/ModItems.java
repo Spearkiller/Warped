@@ -31,6 +31,12 @@ public class ModItems {
     public static final RegistryObject<Item> POTION_RECALL_GREATER = ITEMS.register(
             "potion_recall_greater",
             () -> new ItemPotionRecall(true));
+    public static final RegistryObject<Item> POTION_REUNION_LESSER = ITEMS.register(
+            "potion_reunion_lesser",
+            () -> new ItemPotionReunion(false));
+    public static final RegistryObject<Item> POTION_REUNION_GREATER = ITEMS.register(
+            "potion_reunion_greater",
+            () -> new ItemPotionReunion(true));
 
     //Not adding these for now, because they're so inefficient and I don't know how to make them better.
     /*public static final RegistryObject<Item> POTION_DISCORD_LESSER = ITEMS.register(

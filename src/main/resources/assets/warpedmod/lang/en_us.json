@@ -4,13 +4,15 @@
   "item.warpedmod.celestial_mirror": "Celestial Mirror",
   "item.warpedmod.abyssal_mirror": "Abyssal Mirror",
 
-  "item.warpedmod.potion_recall_lesser": "Recall Potion",
-  "item.warpedmod.potion_recall_greater": "Greater Recall Potion",
+  "item.warpedmod.potion_recall_lesser": "Potion of Recall",
+  "item.warpedmod.potion_recall_greater": "Greater Potion of Recall",
+  "item.warpedmod.potion_reunion_lesser": "Potion of Reunion",
+  "item.warpedmod.potion_reunion_greater": "Greater Potion of Reunion",
+
   "item.warpedmod.totem_of_ascension": "Totem of Ascension",
   "item.warpedmod.withered_totem": "Withered Totem",
 
   "creativetab.warpedmod_items": "Warped",
-
 
   "tooltip.warpedmod.magic_mirror.tooltip": "Teleports the player to their spawn point",
   "tooltip.warpedmod.magic_mirror.tooltip2": "Costs 1 level for every %1$s %2$s, max of %3$s %4$s",
@@ -30,18 +32,26 @@
   "tooltip.warpedmod.potion_recall.tooltip_lesser_warnings": "Does not work across dimensions",
   "tooltip.warpedmod.potion_recall.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point",
 
+  "tooltip.warpedmod.potion_reunion.tooltip_info": "Teleports the player to another player of their choice",
+  "tooltip.warpedmod.potion_reunion.tooltip_lesser_warnings": "Cannot teleport to players in other dimensions",
+  "tooltip.warpedmod.potion_reunion.tooltip_info2": "Crouch + right click to select player",
+
   "tooltip.warpedmod.item_totem_of_ascension.info": "Grants the player flight when within range of a beacon",
   "tooltip.warpedmod.item_totem_of_ascension.info2": "Higher level beacons have a greater range",
 
 
   "info.warpedmod.potion_recall.missing_or_invalid_spawn_point": "You tried to remember where home was, but you couldn't quite place it...",
   "info.warpedmod.potion_recall.wrong_dimension": "You tried to remember home, but it seemed too far away...",
+  "info.warpedmod.potion_reunion.forever_alone": "There didn't seem to be anyone around...",
+  "info.warpedmod.potion_reunion.next_player": "Target set to %1$s (%2$s/%3$s)",
+  "info.warpedmod.potion_reunion.missing_player": "You tried thinking of someone, but they seemed so far away...",
 
   "info.warpedmod.potion_discord.failed_tp": "You braced yourself, but nothing happened...?",
 
   "info.warpedmod.mirrors.missing_or_invalid_spawn_point" : "You gazed into the mirror, but there was nothing on the other side...",
   "info.warpedmod.mirrors.wrong_dimension" : "You gazed into the mirror, but you couldn't see home...",
   "info.warpedmod.mirrors.insufficient_levels" : "You gazed into the mirror, but the reflection seemed distant...",
-  "info.warpedmod.mirrors.use_cancelled_by_damage": "You gazed into the mirror, but your focus was interrupted!"
+  "info.warpedmod.mirrors.use_cancelled_by_damage": "You gazed into the mirror, but your focus was interrupted!",
+  "info.warpedmod.potion_reunion.no_player": "You blindly drank the potion without thinking about another person..."
 
 }

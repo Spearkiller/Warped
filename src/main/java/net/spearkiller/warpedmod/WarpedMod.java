@@ -52,6 +52,10 @@ public class WarpedMod
             GameRules.register("celestialMirrorMaxLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(3));
     public static final  GameRules.Key<GameRules.IntegerValue> FLIGHT_TOTEM_RANGE_MULT =
             GameRules.register("flightRingRangeMult", GameRules.Category.PLAYER, GameRules.IntegerValue.create(100));
+    public static final  GameRules.Key<GameRules.BooleanValue> REUNION_POTION_FUZZY_TEAMS =
+            GameRules.register("reunionPotionIncludesNonTeamedPlayers", GameRules.Category.PLAYER, GameRules.BooleanValue.create(true));
+    public static final  GameRules.Key<GameRules.BooleanValue> REUNION_POTION_IGNORE_TEAMS =
+            GameRules.register("reunionPotionIgnoreTeams", GameRules.Category.PLAYER, GameRules.BooleanValue.create(false));
 
 
 
@@ -90,8 +94,12 @@ public class WarpedMod
         addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.ABYSSAL_MIRROR);
         addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.TOTEM_OF_ASCENSION);
 
+        addItemToCreativeTab(event, CreativeModeTabs.INGREDIENTS, ModItems.WITHERED_TOTEM);
+
         addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_RECALL_LESSER);
         addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_RECALL_GREATER);
+        addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_REUNION_LESSER);
+        addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_REUNION_GREATER);
         //addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_DISCORD_LESSER);
         //addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_DISCORD_GREATER);
 
