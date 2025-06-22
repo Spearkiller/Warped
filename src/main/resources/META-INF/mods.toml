@@ -69,7 +69,7 @@ description='''${mod_description}'''
 [[dependencies.${mod_id}]]
     modId = "curios"
     mandatory = true
-    versionRange = "[5.8.1+1.20.1,)"
+    versionRange = "[5.3.2+1.20.1,)"
     ordering = "NONE"
     side = "BOTH"
 
