@@ -3,11 +3,13 @@ package net.spearkiller.warpedmod.item;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.spearkiller.warpedmod.WarpedMod;
+import net.spearkiller.warpedmod.effects.ModEffects;
 import org.jetbrains.annotations.Nullable;
 import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
@@ -57,6 +59,7 @@ public class ItemTotemOfAscension extends Item implements ICurioItem {
             }
             WarpedMod.BeaconFlightTracker.flightEnabledPlayers.add(player.getUUID());
 
+
         } else {
             //WarpedMod.getLogger().debug(player + " should be prevented from flying.");
 
@@ -67,6 +70,8 @@ public class ItemTotemOfAscension extends Item implements ICurioItem {
                     player.getAbilities().mayfly = false;
                     player.getAbilities().flying = false;
                     player.onUpdateAbilities();
+                    //WarpedMod.getLogger().debug("Removing flight from " + player.getUUID());
+                    player.addEffect(new MobEffectInstance(ModEffects.FALL_BREAK.get(), -1));
                 }
             }
         }

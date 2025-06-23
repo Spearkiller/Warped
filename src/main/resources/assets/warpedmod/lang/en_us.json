@@ -12,6 +12,8 @@
   "item.warpedmod.totem_of_ascension": "Totem of Ascension",
   "item.warpedmod.withered_totem": "Withered Totem",
 
+  "effect.warpedmod.fall_break": "Fall Break",
+
   "creativetab.warpedmod_items": "Warped",
 
   "tooltip.warpedmod.magic_mirror.tooltip": "Teleports the player to their spawn point",

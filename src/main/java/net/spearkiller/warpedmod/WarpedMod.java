@@ -5,6 +5,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -15,6 +16,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -25,6 +27,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.RegistryObject;
+import net.spearkiller.warpedmod.effects.ModEffects;
 import net.spearkiller.warpedmod.item.AbstractMirror;
 import net.spearkiller.warpedmod.item.ItemTotemOfAscension;
 import net.spearkiller.warpedmod.item.ModCreativeTabs;
@@ -67,6 +70,7 @@ public class WarpedMod
 
         ModItems.register(modEventBus);
 
+        ModEffects.register(modEventBus);
 
 
         modEventBus.addListener(this::commonSetup);
@@ -77,7 +81,7 @@ public class WarpedMod
 
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
-        WarpedMod.getLogger().info("WarpedMod loaded!");
+        //WarpedMod.getLogger().info("WarpedMod loaded!");
 
     }
 
@@ -164,6 +168,16 @@ public class WarpedMod
             //WarpedMod.getLogger().debug("Player is server player");
 
             ItemTotemOfAscension.updateFlightStatus(sPlayer);
+        }
+
+        @SubscribeEvent
+        public static void onPlayerFall(LivingFallEvent event) {
+            LivingEntity entity = event.getEntity();
+            //WarpedMod.getLogger().debug("Running fall event on " + entity.getName());
+            if (!entity.hasEffect(ModEffects.FALL_BREAK.get())) return;
+
+            event.setCanceled(true); // No fall damage
+            entity.removeEffect(ModEffects.FALL_BREAK.get());
         }
 
 
