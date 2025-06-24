@@ -6,6 +6,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.monster.WitherSkeleton;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -16,6 +18,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -32,6 +35,7 @@ import net.spearkiller.warpedmod.item.AbstractMirror;
 import net.spearkiller.warpedmod.item.ItemTotemOfAscension;
 import net.spearkiller.warpedmod.item.ModCreativeTabs;
 import net.spearkiller.warpedmod.item.ModItems;
+import net.spearkiller.warpedmod.loot.ModLootModifier;
 import org.slf4j.Logger;
 
 import java.util.*;
@@ -72,6 +76,8 @@ public class WarpedMod
 
         ModEffects.register(modEventBus);
 
+        ModLootModifier.register(modEventBus);
+
 
         modEventBus.addListener(this::commonSetup);
 
@@ -98,6 +104,7 @@ public class WarpedMod
         addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.ABYSSAL_MIRROR);
         addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.TOTEM_OF_ASCENSION);
 
+        addItemToCreativeTab(event, CreativeModeTabs.INGREDIENTS, ModItems.TARNISHED_MIRROR);
         addItemToCreativeTab(event, CreativeModeTabs.INGREDIENTS, ModItems.WITHERED_TOTEM);
 
         addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_RECALL_LESSER);
@@ -178,6 +185,21 @@ public class WarpedMod
 
             event.setCanceled(true); // No fall damage
             entity.removeEffect(ModEffects.FALL_BREAK.get());
+        }
+
+        @SubscribeEvent
+        public static void onMobDrops(LivingDropsEvent event) {
+            if (event.getEntity() instanceof WitherSkeleton) {
+                if (event.getEntity().level().random.nextFloat() < 0.01f) {
+                    event.getDrops().add(new ItemEntity(
+                            event.getEntity().level(),
+                            event.getEntity().getX(),
+                            event.getEntity().getY(),
+                            event.getEntity().getZ(),
+                            new ItemStack(ModItems.WITHERED_TOTEM.get())
+                    ));
+                }
+            }
         }
 
 

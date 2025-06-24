@@ -19,6 +19,7 @@ public class ModCreativeTabs {
                     .title(Component.translatable("creativetab.warpedmod_items"))
                     .displayItems((pParameters, pOutput) -> {
 
+                        pOutput.accept(ModItems.TARNISHED_MIRROR.get());
                         pOutput.accept(ModItems.MAGIC_MIRROR.get());
                         pOutput.accept(ModItems.CELESTIAL_MIRROR.get());
                         pOutput.accept(ModItems.ABYSSAL_MIRROR.get());

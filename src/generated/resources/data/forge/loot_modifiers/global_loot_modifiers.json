@@ -1,0 +1,13 @@
+{
+  "entries": [
+    "warpedmod:tarnished_mirror_from_trail_ruins",
+    "warpedmod:recall_potion_from_simple_dungeon",
+    "warpedmod:recall_potion_from_abandoned_mineshaft",
+    "warpedmod:withered_totem_from_wither_skeletons",
+    "warpedmod:recall_potion_from_stronghold_crossing",
+    "warpedmod:recall_potion_from_stronghold_corridor",
+    "warpedmod:tarnished_mirror_from_desert_pyramid",
+    "warpedmod:withered_totem_from_nether_fortresses"
+  ],
+  "replace": false
+}

@@ -10,7 +10,9 @@ import net.spearkiller.warpedmod.WarpedMod;
 public class ModItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, WarpedMod.MOD_ID);
-
+    public static final RegistryObject<Item> TARNISHED_MIRROR = ITEMS.register(
+            "tarnished_mirror",
+            () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> MAGIC_MIRROR = ITEMS.register(
             "magic_mirror",
             () -> new ItemMagicMirror(new Item.Properties().stacksTo(1), false));
@@ -48,7 +50,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> WITHERED_TOTEM = ITEMS.register(
             "withered_totem",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> TOTEM_OF_ASCENSION = ITEMS.register(
             "totem_of_ascension",
             () -> new ItemTotemOfAscension(new Item.Properties()));

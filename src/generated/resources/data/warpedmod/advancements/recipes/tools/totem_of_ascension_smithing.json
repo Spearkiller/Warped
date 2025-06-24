@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "warpedmod:totem_of_ascension_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_withered_totem": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "warpedmod:withered_totem"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_withered_totem",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "warpedmod:totem_of_ascension_smithing"
+    ]
+  },
+  "sends_telemetry_event": false
+}

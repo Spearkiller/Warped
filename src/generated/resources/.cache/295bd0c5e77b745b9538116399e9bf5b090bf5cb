@@ -1,0 +1,11 @@
+// 1.20.1	2025-06-24T22:00:19.1057067	Item Models: warpedmod
+f7b1224f25a42e3bff86d4c504d8457248d16a2d assets/warpedmod/models/item/abyssal_mirror.json
+1addddff0031b604e4d2dd76faa3960a5b2c9f9c assets/warpedmod/models/item/celestial_mirror.json
+440904bbd60c80dd420264957f4c9832033b6dc0 assets/warpedmod/models/item/magic_mirror.json
+061b6e2cb89c95f32aada26e57371b088133bf5c assets/warpedmod/models/item/potion_recall_greater.json
+5f9b57d74026f15c1c2cb751ea9c2a269d6da089 assets/warpedmod/models/item/potion_recall_lesser.json
+3832b3c12d3d9bd9769c96686a44da419876a577 assets/warpedmod/models/item/potion_reunion_greater.json
+4f67e743d52ebd9f170d3690d6e8baac0a1d5423 assets/warpedmod/models/item/potion_reunion_lesser.json
+b69a4abbfed0718c6bfb67af2bc57f6c610bbe5d assets/warpedmod/models/item/tarnished_mirror.json
+35db69954e36ea005289c762177bca786991c2c9 assets/warpedmod/models/item/totem_of_ascension.json
+9cf5b6edde0e5d23e09491fb8811aa0f80400ce4 assets/warpedmod/models/item/withered_totem.json
