@@ -15,7 +15,7 @@ import java.util.List;
 public class ItemAbyssalMirror extends AbstractMirror {
 
     public static final DustParticleOptions DUST_ABYSSAL_MIRROR = new DustParticleOptions(
-            Vec3.fromRGB24(0x1D1A1C).toVector3f(), 1.0f
+            Vec3.fromRGB24(0x034150).toVector3f(), 1.0f
     );
 
     public ItemAbyssalMirror(Properties pProperties, boolean xDimension){

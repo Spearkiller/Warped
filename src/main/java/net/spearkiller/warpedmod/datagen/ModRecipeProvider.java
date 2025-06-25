@@ -36,6 +36,26 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlocks("has_tarnished_mirror", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.TARNISHED_MIRROR.get()))
                 .save(pWriter, new ResourceLocation("warpedmod", "magic_mirror_smithing"));
 
+        //Recipe for Celestial Mirror
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                        Ingredient.of(ModItems.MAGIC_MIRROR.get()),
+                        Ingredient.of(Items.NETHERITE_INGOT),
+                        RecipeCategory.TOOLS,
+                        ModItems.MAGIC_MIRROR.get())
+                .unlocks("has_magic_mirror", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.MAGIC_MIRROR.get()))
+                .save(pWriter, new ResourceLocation("warpedmod", "celestial_mirror_smithing"));
+
+        //Recipe for Abyssal Mirror
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                        Ingredient.of(ModItems.MAGIC_MIRROR.get()),
+                        Ingredient.of(Items.ECHO_SHARD),
+                        RecipeCategory.TOOLS,
+                        ModItems.MAGIC_MIRROR.get())
+                .unlocks("has_celestial_mirror", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.MAGIC_MIRROR.get()))
+                .save(pWriter, new ResourceLocation("warpedmod", "abyssal_mirror_smithing"));
+
         //Recipe for Totem of Ascension
         SmithingTransformRecipeBuilder.smithing(
                 Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),

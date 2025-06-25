@@ -15,7 +15,7 @@ import java.util.List;
 public class ItemCelestialMirror extends AbstractMirror {
 
     public static final DustParticleOptions DUST_CELESTIAL_MIRROR = new DustParticleOptions(
-            Vec3.fromRGB24(0x009295).toVector3f(), 1.0f
+            Vec3.fromRGB24(0xB9C9C9).toVector3f(), 1.0f
     );
 
     public ItemCelestialMirror(Properties pProperties, boolean xDimension){

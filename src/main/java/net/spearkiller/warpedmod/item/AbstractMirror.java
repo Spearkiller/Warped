@@ -22,6 +22,7 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -85,12 +86,21 @@ public abstract class AbstractMirror extends Item {
 
         // Get the player's spawn dimension. Yes we have it already if their bed is in the same dimension as them but still
         ServerLevel targetDimension = player.getServer().getLevel(spawnDimension);
-        player.teleportTo(targetDimension, trueSpawnPosition.x(), trueSpawnPosition.y() + 0.1, trueSpawnPosition.z(), spawnAngle, 0f);
+
 
         trySpawnParticles(level, entity, DUST_TYPE, 60, true);
         trySpawnParticles(level, entity, ParticleTypes.END_ROD, 30, true);
 
+        //Play sounds and emit vibrations at new and old positions.
         level.playSound(null, player.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.25f, 1.5f);
+        sLevel.gameEvent(GameEvent.RESONATE_15, player.blockPosition(), GameEvent.Context.of(player));
+
+        player.teleportTo(targetDimension, trueSpawnPosition.x(), trueSpawnPosition.y() + 0.1, trueSpawnPosition.z(), spawnAngle, 0f);
+
+        BlockPos newPos = new BlockPos((int)trueSpawnPosition.x, (int)trueSpawnPosition.y, (int)trueSpawnPosition.z);
+
+        level.playSound(null, newPos, SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.25f, 1.5f);
+        sLevel.gameEvent(GameEvent.RESONATE_15, newPos, GameEvent.Context.of(player));
 
         player.getCooldowns().addCooldown(this, 40);
         return stack;
@@ -110,6 +120,7 @@ public abstract class AbstractMirror extends Item {
         //this could probably be changed to be client-side only. Whaddaya gonna do?
         if (elapsed % 10 == 0 && remainingUseDuration > 0) {
             sLevel.playSound(null, player.blockPosition(), SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, 0.75f, 2.0f);
+            sLevel.gameEvent(GameEvent.RESONATE_15, player.position(), GameEvent.Context.of(player));
         }
     }
 

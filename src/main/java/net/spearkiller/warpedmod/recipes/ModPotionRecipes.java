@@ -18,7 +18,7 @@ public class ModPotionRecipes {
         //Chances are if people want the mod then they also want the potions.
         //They're supposed to be common enough (though still valuable) until you can
         //find a tarnished mirror.
-        
+
         event.enqueueWork(() -> {
             BrewingRecipeRegistry.addRecipe(
                     new BrewingRecipe(

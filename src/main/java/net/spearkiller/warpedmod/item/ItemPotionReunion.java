@@ -17,6 +17,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.scores.Team;
 import net.spearkiller.warpedmod.WarpedMod;
@@ -128,10 +129,15 @@ public class ItemPotionReunion extends Item{
                 //Player is still in the server and accessible
                 if (checkPlayer(targetPlayer, player)){
                     ServerLevel targetDimension = targetPlayer.serverLevel();
+
+                    level.playSound(null, player.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.25f, 1.5f);
+                    targetDimension.gameEvent(GameEvent.RESONATE_15, player.position(), GameEvent.Context.of(player));
+
                     player.teleportTo(targetDimension, targetPlayer.blockPosition().getX(), targetPlayer.blockPosition().getY() + 0.1, targetPlayer.blockPosition().getZ(), targetPlayer.getXRot(), targetPlayer.getYRot());
 
                     AbstractMirror.trySpawnParticles(level, entity, ParticleTypes.END_ROD, 30, true);
-                    level.playSound(null, player.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.25f, 1.5f);
+                    level.playSound(null, targetPlayer.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.25f, 1.5f);
+                    targetDimension.gameEvent(GameEvent.RESONATE_15, targetPlayer.position(), GameEvent.Context.of(player));
                 }
                 //Player has changed dimensions or teams
                 else {
