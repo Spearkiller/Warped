@@ -36,6 +36,7 @@ import net.spearkiller.warpedmod.item.ItemTotemOfAscension;
 import net.spearkiller.warpedmod.item.ModCreativeTabs;
 import net.spearkiller.warpedmod.item.ModItems;
 import net.spearkiller.warpedmod.loot.ModLootModifier;
+import net.spearkiller.warpedmod.recipes.ModPotionRecipes;
 import org.slf4j.Logger;
 
 import java.util.*;
@@ -79,6 +80,7 @@ public class WarpedMod
         ModLootModifier.register(modEventBus);
 
 
+
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -93,7 +95,7 @@ public class WarpedMod
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-
+        ModPotionRecipes.register(event);
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event)
