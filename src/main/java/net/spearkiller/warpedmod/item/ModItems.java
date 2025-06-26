@@ -1,6 +1,7 @@
 package net.spearkiller.warpedmod.item;
 
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -12,18 +13,18 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, WarpedMod.MOD_ID);
     public static final RegistryObject<Item> TARNISHED_MIRROR = ITEMS.register(
             "tarnished_mirror",
-            () -> new Item(new Item.Properties().stacksTo(1)));
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> MAGIC_MIRROR = ITEMS.register(
             "magic_mirror",
-            () -> new ItemMagicMirror(new Item.Properties().stacksTo(1), false));
+            () -> new ItemMagicMirror(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON), false));
 
     public static final RegistryObject<Item> CELESTIAL_MIRROR = ITEMS.register(
             "celestial_mirror",
-            () -> new ItemCelestialMirror(new Item.Properties().stacksTo(1),  true));
+            () -> new ItemCelestialMirror(new Item.Properties().stacksTo(1).rarity(Rarity.RARE),  true));
 
     public static final RegistryObject<Item> ABYSSAL_MIRROR = ITEMS.register(
             "abyssal_mirror",
-            () -> new ItemAbyssalMirror(new Item.Properties().stacksTo(1),  true));
+            () -> new ItemAbyssalMirror(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC),  true));
 
 
 
@@ -50,10 +51,10 @@ public class ModItems {
 
     public static final RegistryObject<Item> WITHERED_TOTEM = ITEMS.register(
             "withered_totem",
-            () -> new Item(new Item.Properties().stacksTo(1)));
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
     public static final RegistryObject<Item> TOTEM_OF_ASCENSION = ITEMS.register(
             "totem_of_ascension",
-            () -> new ItemTotemOfAscension(new Item.Properties()));
+            () -> new ItemTotemOfAscension(new Item.Properties().rarity(Rarity.EPIC)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

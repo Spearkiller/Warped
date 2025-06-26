@@ -36,7 +36,7 @@ import net.spearkiller.warpedmod.item.ItemTotemOfAscension;
 import net.spearkiller.warpedmod.item.ModCreativeTabs;
 import net.spearkiller.warpedmod.item.ModItems;
 import net.spearkiller.warpedmod.loot.ModLootModifier;
-import net.spearkiller.warpedmod.recipes.ModPotionRecipes;
+import net.spearkiller.warpedmod.events.ModPotionRecipes;
 import org.slf4j.Logger;
 
 import java.util.*;

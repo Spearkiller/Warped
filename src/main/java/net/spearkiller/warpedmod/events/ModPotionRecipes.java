@@ -1,4 +1,4 @@
-package net.spearkiller.warpedmod.recipes;
+package net.spearkiller.warpedmod.events;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;

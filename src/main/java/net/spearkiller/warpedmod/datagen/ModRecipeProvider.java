@@ -42,7 +42,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         Ingredient.of(ModItems.MAGIC_MIRROR.get()),
                         Ingredient.of(Items.NETHERITE_INGOT),
                         RecipeCategory.TOOLS,
-                        ModItems.MAGIC_MIRROR.get())
+                        ModItems.CELESTIAL_MIRROR.get())
                 .unlocks("has_magic_mirror", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.MAGIC_MIRROR.get()))
                 .save(pWriter, new ResourceLocation("warpedmod", "celestial_mirror_smithing"));
 
@@ -52,8 +52,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         Ingredient.of(ModItems.MAGIC_MIRROR.get()),
                         Ingredient.of(Items.ECHO_SHARD),
                         RecipeCategory.TOOLS,
-                        ModItems.MAGIC_MIRROR.get())
-                .unlocks("has_celestial_mirror", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.MAGIC_MIRROR.get()))
+                        ModItems.ABYSSAL_MIRROR.get())
+                .unlocks("has_celestial_mirror", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.CELESTIAL_MIRROR.get()))
                 .save(pWriter, new ResourceLocation("warpedmod", "abyssal_mirror_smithing"));
 
         //Recipe for Totem of Ascension

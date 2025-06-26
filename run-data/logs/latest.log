@@ -1,42 +1,42 @@
-[25Jun2025 22:22:32.475] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\Brad\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, warpedmod, --all, --output, C:\Users\Brad\Documents\Unit 0\Minecrap\New Mods\Warped\src\generated\resources, --existing, C:\Users\Brad\Documents\Unit 0\Minecrap\New Mods\Warped\src\main\resources, --mixin.config, warpedmod.mixins.json]
-[25Jun2025 22:22:32.491] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.15 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
-[25Jun2025 22:22:32.627] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
-[25Jun2025 22:22:32.682] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Brad/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
-[25Jun2025 22:22:33.140] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Brad\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.0\f0c0b352173d0a378cbdcec9cfc4ba65899a721\javafmllanguage-1.20.1-47.4.0.jar is missing mods.toml file
-[25Jun2025 22:22:33.144] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Brad\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.0\e862740d8c84d08dbfedea412bef88fe42e727c5\lowcodelanguage-1.20.1-47.4.0.jar is missing mods.toml file
-[25Jun2025 22:22:33.148] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Brad\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.0\5719b3a297a33f877ed5dde4cb4bd75c859096af\mclanguage-1.20.1-47.4.0.jar is missing mods.toml file
-[25Jun2025 22:22:33.152] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Brad\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.0\235975dafa4309945b59c56b53f31dc5b65a6051\fmlcore-1.20.1-47.4.0.jar is missing mods.toml file
-[25Jun2025 22:22:33.313] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[25Jun2025 22:22:34.828] [main/WARN] [mixin/]: Compatibility level JAVA_17 specified by warpedmod.mixins.json is higher than the maximum level supported by this version of mixin (JAVA_13).
-[25Jun2025 22:22:34.828] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[25Jun2025 22:22:34.835] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\Brad\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, warpedmod, --all, --output, C:\Users\Brad\Documents\Unit 0\Minecrap\New Mods\Warped\src\generated\resources, --existing, C:\Users\Brad\Documents\Unit 0\Minecrap\New Mods\Warped\src\main\resources]
-[25Jun2025 22:22:34.916] [main/INFO] [mixin/]: Preparing mixins for MixinEnvironment[DEFAULT]
-[25Jun2025 22:22:34.917] [main/INFO] [mixin/]: Selecting config warpedmod.mixins.json
-[25Jun2025 22:22:34.920] [main/WARN] [mixin/]: Reference map 'mixins.warpedmod.refmap.json' for warpedmod.mixins.json could not be read. If this is a development environment you can ignore this message
-[25Jun2025 22:22:34.921] [main/INFO] [mixin/]: Selecting config curios.mixins.json
-[25Jun2025 22:22:35.210] [main/INFO] [mixin/]: Remapping refMap curios.refmap.json using C:\Users\Brad\Documents\Unit 0\Minecrap\New Mods\Warped\build\createSrgToMcp\output.srg
-[25Jun2025 22:22:35.211] [main/INFO] [mixin/]: Preparing warpedmod.mixins.json (2)
-[25Jun2025 22:22:35.253] [main/INFO] [mixin/]: Preparing curios.mixins.json (8)
-[25Jun2025 22:22:35.355] [main/INFO] [mixin/]: Prepared 10 mixins in 0.438 sec (43.8ms avg) (0ms load, 0ms transform, 0ms plugin)
-[25Jun2025 22:22:35.692] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [warpedmod]
-[25Jun2025 22:22:35.858] [main/INFO] [mixin/]: Mixing AccessorEntity from curios.mixins.json into net.minecraft.world.entity.Entity
-[25Jun2025 22:22:35.926] [main/INFO] [mixin/]: Mixing MixinLivingEntity from curios.mixins.json into net.minecraft.world.entity.LivingEntity
-[25Jun2025 22:22:36.850] [main/INFO] [mixin/]: Mixing MixinPowderSnowBlock from curios.mixins.json into net.minecraft.world.level.block.PowderSnowBlock
-[25Jun2025 22:22:37.434] [main/INFO] [mixin/]: Mixing BeaconBlockEntityAccessor from warpedmod.mixins.json into net.minecraft.world.level.block.entity.BeaconBlockEntity
-[25Jun2025 22:22:37.435] [main/INFO] [mixin/]: Mixing BeaconBlockEntityMixin from warpedmod.mixins.json into net.minecraft.world.level.block.entity.BeaconBlockEntity
-[25Jun2025 22:22:38.087] [main/INFO] [mixin/]: Mixing MixinShearsItem from curios.mixins.json into net.minecraft.world.item.ShearsItem
-[25Jun2025 22:22:39.867] [main/INFO] [mixin/]: Mixing MixinApplyBonusCount from curios.mixins.json into net.minecraft.world.level.storage.loot.functions.ApplyBonusCount
-[25Jun2025 22:22:40.797] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.0, for MC 1.20.1 with MCP 20230612.114412
-[25Jun2025 22:22:40.798] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.0 Initialized
-[25Jun2025 22:22:41.078] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
-[25Jun2025 22:22:41.084] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 3.357 ms
-[25Jun2025 22:22:41.404] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Brad/Documents/Unit%200/Minecrap/New%20Mods/Warped/build/fg_cache/net/minecraftforge/forge/1.20.1-47.4.0_mapped_parchment_2023.06.26-1.20.1/forge-1.20.1-47.4.0_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
-[25Jun2025 22:22:41.404] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Brad/Documents/Unit%200/Minecrap/New%20Mods/Warped/build/fg_cache/net/minecraftforge/forge/1.20.1-47.4.0_mapped_parchment_2023.06.26-1.20.1/forge-1.20.1-47.4.0_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
-[25Jun2025 22:22:41.622] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
-[25Jun2025 22:22:41.648] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 25 ms
-[25Jun2025 22:22:41.648] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: warpedmod
-[25Jun2025 22:22:41.661] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: warpedmod finished after 12 ms
-[25Jun2025 22:22:41.661] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Global Loot Modifiers : warpedmod
-[25Jun2025 22:22:41.679] [main/INFO] [net.minecraft.data.DataGenerator/]: Global Loot Modifiers : warpedmod finished after 18 ms
-[25Jun2025 22:22:41.680] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 57 ms
-[25Jun2025 22:22:41.690] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 27, old count: 23, new count: 28, removed stale: 0, written: 9
+[26Jun2025 17:30:26.008] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\Brad\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.4.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, warpedmod, --all, --output, C:\Users\Brad\Documents\Unit 0\Minecrap\New Mods\Warped\src\generated\resources, --existing, C:\Users\Brad\Documents\Unit 0\Minecrap\New Mods\Warped\src\main\resources, --mixin.config, warpedmod.mixins.json]
+[26Jun2025 17:30:26.011] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.15 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
+[26Jun2025 17:30:26.169] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[26Jun2025 17:30:26.223] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/Brad/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[26Jun2025 17:30:26.701] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Brad\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.4.0\f0c0b352173d0a378cbdcec9cfc4ba65899a721\javafmllanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[26Jun2025 17:30:26.705] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Brad\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.4.0\e862740d8c84d08dbfedea412bef88fe42e727c5\lowcodelanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[26Jun2025 17:30:26.710] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Brad\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.4.0\5719b3a297a33f877ed5dde4cb4bd75c859096af\mclanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[26Jun2025 17:30:26.714] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\Brad\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.4.0\235975dafa4309945b59c56b53f31dc5b65a6051\fmlcore-1.20.1-47.4.0.jar is missing mods.toml file
+[26Jun2025 17:30:26.830] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[26Jun2025 17:30:28.741] [main/WARN] [mixin/]: Compatibility level JAVA_17 specified by warpedmod.mixins.json is higher than the maximum level supported by this version of mixin (JAVA_13).
+[26Jun2025 17:30:28.742] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[26Jun2025 17:30:28.748] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\Brad\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, warpedmod, --all, --output, C:\Users\Brad\Documents\Unit 0\Minecrap\New Mods\Warped\src\generated\resources, --existing, C:\Users\Brad\Documents\Unit 0\Minecrap\New Mods\Warped\src\main\resources]
+[26Jun2025 17:30:28.825] [main/INFO] [mixin/]: Preparing mixins for MixinEnvironment[DEFAULT]
+[26Jun2025 17:30:28.825] [main/INFO] [mixin/]: Selecting config warpedmod.mixins.json
+[26Jun2025 17:30:28.830] [main/WARN] [mixin/]: Reference map 'mixins.warpedmod.refmap.json' for warpedmod.mixins.json could not be read. If this is a development environment you can ignore this message
+[26Jun2025 17:30:28.831] [main/INFO] [mixin/]: Selecting config curios.mixins.json
+[26Jun2025 17:30:29.490] [main/INFO] [mixin/]: Remapping refMap curios.refmap.json using C:\Users\Brad\Documents\Unit 0\Minecrap\New Mods\Warped\build\createSrgToMcp\output.srg
+[26Jun2025 17:30:29.491] [main/INFO] [mixin/]: Preparing warpedmod.mixins.json (2)
+[26Jun2025 17:30:29.532] [main/INFO] [mixin/]: Preparing curios.mixins.json (8)
+[26Jun2025 17:30:29.641] [main/INFO] [mixin/]: Prepared 10 mixins in 0.815 sec (81.5ms avg) (0ms load, 0ms transform, 0ms plugin)
+[26Jun2025 17:30:30.050] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [warpedmod]
+[26Jun2025 17:30:30.252] [main/INFO] [mixin/]: Mixing AccessorEntity from curios.mixins.json into net.minecraft.world.entity.Entity
+[26Jun2025 17:30:30.350] [main/INFO] [mixin/]: Mixing MixinLivingEntity from curios.mixins.json into net.minecraft.world.entity.LivingEntity
+[26Jun2025 17:30:31.515] [main/INFO] [mixin/]: Mixing MixinPowderSnowBlock from curios.mixins.json into net.minecraft.world.level.block.PowderSnowBlock
+[26Jun2025 17:30:32.339] [main/INFO] [mixin/]: Mixing BeaconBlockEntityAccessor from warpedmod.mixins.json into net.minecraft.world.level.block.entity.BeaconBlockEntity
+[26Jun2025 17:30:32.341] [main/INFO] [mixin/]: Mixing BeaconBlockEntityMixin from warpedmod.mixins.json into net.minecraft.world.level.block.entity.BeaconBlockEntity
+[26Jun2025 17:30:33.315] [main/INFO] [mixin/]: Mixing MixinShearsItem from curios.mixins.json into net.minecraft.world.item.ShearsItem
+[26Jun2025 17:30:35.496] [main/INFO] [mixin/]: Mixing MixinApplyBonusCount from curios.mixins.json into net.minecraft.world.level.storage.loot.functions.ApplyBonusCount
+[26Jun2025 17:30:36.723] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.0, for MC 1.20.1 with MCP 20230612.114412
+[26Jun2025 17:30:36.725] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.0 Initialized
+[26Jun2025 17:30:36.990] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
+[26Jun2025 17:30:36.997] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 4.411 ms
+[26Jun2025 17:30:37.421] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Brad/Documents/Unit%200/Minecrap/New%20Mods/Warped/build/fg_cache/net/minecraftforge/forge/1.20.1-47.4.0_mapped_parchment_2023.06.26-1.20.1/forge-1.20.1-47.4.0_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[26Jun2025 17:30:37.421] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/Brad/Documents/Unit%200/Minecrap/New%20Mods/Warped/build/fg_cache/net/minecraftforge/forge/1.20.1-47.4.0_mapped_parchment_2023.06.26-1.20.1/forge-1.20.1-47.4.0_mapped_parchment_2023.06.26-1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[26Jun2025 17:30:37.602] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[26Jun2025 17:30:37.657] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 53 ms
+[26Jun2025 17:30:37.657] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: warpedmod
+[26Jun2025 17:30:37.673] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: warpedmod finished after 15 ms
+[26Jun2025 17:30:37.673] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Global Loot Modifiers : warpedmod
+[26Jun2025 17:30:37.690] [main/INFO] [net.minecraft.data.DataGenerator/]: Global Loot Modifiers : warpedmod finished after 17 ms
+[26Jun2025 17:30:37.690] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 88 ms
+[26Jun2025 17:30:37.698] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 27, old count: 27, new count: 28, removed stale: 0, written: 2
