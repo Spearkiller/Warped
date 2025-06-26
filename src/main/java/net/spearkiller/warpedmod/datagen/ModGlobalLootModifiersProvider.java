@@ -21,13 +21,13 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
     @Override
     protected void start() {
         add("withered_totem_from_wither_skeletons", new AddItemModifier(new LootItemCondition[]{
-                new LootTableIdCondition.Builder(new ResourceLocation("entities/wither_skeleton")).build(),
+                new LootTableIdCondition.Builder(ResourceLocation.parse("entities/wither_skeleton")).build(),
                 LootItemRandomChanceCondition.randomChance(0.01f).build()
         }, ModItems.WITHERED_TOTEM.get()));
 
 
         add("withered_totem_from_nether_fortresses", new AddItemModifier(new LootItemCondition[]{
-                new LootTableIdCondition.Builder(new ResourceLocation("chests/nether_bridge")).build(),
+                new LootTableIdCondition.Builder(ResourceLocation.parse("chests/nether_bridge")).build(),
                 LootItemRandomChanceCondition.randomChance(0.25f).build()
         }, ModItems.WITHERED_TOTEM.get()));
 
@@ -40,18 +40,18 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
 
         for (String l: recallLocations){
             add("recall_potion_from_" + l, new AddItemModifier(new LootItemCondition[]{
-                    new LootTableIdCondition.Builder(new ResourceLocation("chests/"+l)).build(),
+                    new LootTableIdCondition.Builder(ResourceLocation.parse("chests/"+l)).build(),
                     LootItemRandomChanceCondition.randomChance(0.25f).build()
 
             }, ModItems.POTION_RECALL_LESSER.get()));
         }
 
         add("tarnished_mirror_from_trail_ruins", new AddSusItemModifier(new LootItemCondition[]{
-                new LootTableIdCondition.Builder(new ResourceLocation("archaeology/trail_ruins_rare")).build()
+                new LootTableIdCondition.Builder(ResourceLocation.parse("archaeology/trail_ruins_rare")).build()
         }, ModItems.TARNISHED_MIRROR.get()));
 
         add("tarnished_mirror_from_desert_pyramid", new AddSusItemModifier(new LootItemCondition[]{
-                new LootTableIdCondition.Builder(new ResourceLocation("archaeology/desert_pyramid")).build()
+                new LootTableIdCondition.Builder(ResourceLocation.parse("archaeology/desert_pyramid")).build()
         }, ModItems.TARNISHED_MIRROR.get()));
 
 

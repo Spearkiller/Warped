@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:nether/find_fortress",
+  "criteria": {
+    "warpedmod:has_withered_totem": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "warpedmod:withered_totem"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.warpedmod.withered_totem.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "warpedmod:withered_totem"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.warpedmod.withered_totem"
+    }
+  },
+  "requirements": [
+    [
+      "warpedmod:has_withered_totem"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

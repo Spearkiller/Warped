@@ -55,6 +55,19 @@
   "info.warpedmod.mirrors.wrong_dimension" : "You gazed into the mirror, but you couldn't see home...",
   "info.warpedmod.mirrors.insufficient_levels" : "You gazed into the mirror, but the reflection seemed distant...",
   "info.warpedmod.mirrors.use_cancelled_by_damage": "You gazed into the mirror, but your focus was interrupted!",
-  "info.warpedmod.potion_reunion.no_player": "You blindly drank the potion without thinking about another person..."
+  "info.warpedmod.potion_reunion.no_player": "You blindly drank the potion without thinking about another person...",
+
+  "advancement.warpedmod.tarnished_mirror": "Mirror, Mirror",
+  "advancement.warpedmod.tarnished_mirror.desc": "Find a Tarnished Mirror in a Trail Ruin or Desert Temple",
+  "advancement.warpedmod.magic_mirror": "Upon Reflection...",
+  "advancement.warpedmod.magic_mirror.desc": "Restore a Tarnished Mirror",
+  "advancement.warpedmod.celestial_mirror": "Seeing Stars",
+  "advancement.warpedmod.celestial_mirror.desc": "Upgrade a Magic Mirror into a Celestial Mirror",
+  "advancement.warpedmod.abyssal_mirror": "It Stares Back...",
+  "advancement.warpedmod.abyssal_mirror.desc": "Upgrade your Celesital Mirror into an Abyssal Mirror",
+  "advancement.warpedmod.withered_totem": "Ethereal Effigy",
+  "advancement.warpedmod.withered_totem.desc": "Acquire a Withered Totem from a Nether Fortress",
+  "advancement.warpedmod.totem_of_ascension": "Fly Me To The Moon",
+  "advancement.warpedmod.totem_of_ascension.desc": "Restore a Withered Totem into an artifact of great power..."
 
 }

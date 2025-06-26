@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:adventure/salvage_sherd",
+  "criteria": {
+    "warpedmod:has_tarnished_mirror": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "warpedmod:tarnished_mirror"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.warpedmod.tarnished_mirror.desc"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "warpedmod:tarnished_mirror"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.warpedmod.tarnished_mirror"
+    }
+  },
+  "requirements": [
+    [
+      "warpedmod:has_tarnished_mirror"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

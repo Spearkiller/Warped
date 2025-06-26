@@ -1,0 +1,38 @@
+{
+  "parent": "warpedmod:get_celestial_mirror",
+  "criteria": {
+    "warpedmod:has_abyssal_mirror": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "warpedmod:abyssal_mirror"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancement.warpedmod.abyssal_mirror.desc"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "warpedmod:abyssal_mirror"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.warpedmod.abyssal_mirror"
+    }
+  },
+  "requirements": [
+    [
+      "warpedmod:has_abyssal_mirror"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

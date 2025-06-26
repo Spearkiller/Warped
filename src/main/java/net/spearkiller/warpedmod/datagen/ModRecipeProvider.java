@@ -34,7 +34,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         RecipeCategory.TOOLS,
                         ModItems.MAGIC_MIRROR.get())
                 .unlocks("has_tarnished_mirror", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.TARNISHED_MIRROR.get()))
-                .save(pWriter, new ResourceLocation("warpedmod", "magic_mirror_smithing"));
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath("warpedmod", "magic_mirror_smithing"));
 
         //Recipe for Celestial Mirror
         SmithingTransformRecipeBuilder.smithing(
@@ -44,17 +44,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         RecipeCategory.TOOLS,
                         ModItems.CELESTIAL_MIRROR.get())
                 .unlocks("has_magic_mirror", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.MAGIC_MIRROR.get()))
-                .save(pWriter, new ResourceLocation("warpedmod", "celestial_mirror_smithing"));
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath("warpedmod", "celestial_mirror_smithing"));
 
         //Recipe for Abyssal Mirror
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
-                        Ingredient.of(ModItems.MAGIC_MIRROR.get()),
+                        Ingredient.of(ModItems.CELESTIAL_MIRROR.get()),
                         Ingredient.of(Items.ECHO_SHARD),
                         RecipeCategory.TOOLS,
                         ModItems.ABYSSAL_MIRROR.get())
                 .unlocks("has_celestial_mirror", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.CELESTIAL_MIRROR.get()))
-                .save(pWriter, new ResourceLocation("warpedmod", "abyssal_mirror_smithing"));
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath("warpedmod", "abyssal_mirror_smithing"));
 
         //Recipe for Totem of Ascension
         SmithingTransformRecipeBuilder.smithing(
@@ -64,6 +64,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 RecipeCategory.TOOLS,
                 ModItems.TOTEM_OF_ASCENSION.get())
                 .unlocks("has_withered_totem", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.WITHERED_TOTEM.get()))
-                .save(pWriter, new ResourceLocation("warpedmod", "totem_of_ascension_smithing"));
+                .save(pWriter, ResourceLocation.fromNamespaceAndPath("warpedmod", "totem_of_ascension_smithing"));
     }
 }
