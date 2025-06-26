@@ -21,6 +21,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -130,6 +131,7 @@ public class WarpedMod
 
     }
 
+
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
@@ -202,6 +204,20 @@ public class WarpedMod
                     ));
                 }
             }
+        }
+
+        @SubscribeEvent
+        public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
+            WarpedMod.getLogger().debug("Player " + event.getEntity().getName() + " logged in!");
+            if (!(event.getEntity() instanceof ServerPlayer player)) return;
+            ItemTotemOfAscension.updateFlightStatus(player);
+        }
+
+        @SubscribeEvent
+        public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
+            WarpedMod.getLogger().debug("Player " + event.getEntity().getName() + " respawned!");
+            if (!(event.getEntity() instanceof ServerPlayer player)) return;
+            ItemTotemOfAscension.updateFlightStatus(player);
         }
 
 
