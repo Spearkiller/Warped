@@ -14,7 +14,7 @@ public class ModCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, WarpedMod.MOD_ID);
 
-    public static final RegistryObject<CreativeModeTab> WARPED_ITEMS_TAB = CREATIVE_MODE_TABS.register("tutorial_tab",
+    public static final RegistryObject<CreativeModeTab> WARPED_ITEMS_TAB = CREATIVE_MODE_TABS.register("warped_items",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.MAGIC_MIRROR.get()))
                     .title(Component.translatable("creativetab.warpedmod_items"))
                     .displayItems((pParameters, pOutput) -> {
