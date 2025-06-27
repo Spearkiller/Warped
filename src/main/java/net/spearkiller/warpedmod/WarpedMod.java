@@ -230,7 +230,7 @@ public class WarpedMod
     public static class BeaconFlightTracker {
         public static final Map<UUID, Integer> playersInBeaconRange = new HashMap<>();
         public static final Set<UUID> flightEnabledPlayers = new HashSet<>();
-        public static final int GRACE_PERIOD_TICKS = 100;
+        public static final int GRACE_PERIOD_TICKS = 50;
 
         public static boolean isPlayerInRange(ServerPlayer player) {
             Integer lastSeen = playersInBeaconRange.get(player.getUUID());
