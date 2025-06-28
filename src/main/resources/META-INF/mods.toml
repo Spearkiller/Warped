@@ -11,7 +11,9 @@ modId="${mod_id}"
 version="${mod_version}"
 displayName="${mod_name}"
 authors="${mod_authors}"
-
+description = '''
+	Warped is a simple utility/magic mod designed around making it easier for you to get to where you need to be.
+	'''
 
 description='''${mod_description}'''
 [[dependencies.${mod_id}]]
