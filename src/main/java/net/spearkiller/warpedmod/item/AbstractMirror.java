@@ -92,14 +92,14 @@ public abstract class AbstractMirror extends Item {
         trySpawnParticles(level, entity, ParticleTypes.END_ROD, 30, true);
 
         //Play sounds and emit vibrations at new and old positions.
-        level.playSound(null, player.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.25f, 1.5f);
+        level.playSound(null, player.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.2f, 1.5f);
         sLevel.gameEvent(GameEvent.RESONATE_15, player.blockPosition(), GameEvent.Context.of(player));
 
         player.teleportTo(targetDimension, trueSpawnPosition.x(), trueSpawnPosition.y() + 0.1, trueSpawnPosition.z(), spawnAngle, 0f);
 
         BlockPos newPos = new BlockPos((int)trueSpawnPosition.x, (int)trueSpawnPosition.y, (int)trueSpawnPosition.z);
 
-        level.playSound(null, newPos, SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.25f, 1.5f);
+        level.playSound(null, newPos, SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.2f, 1.5f);
         sLevel.gameEvent(GameEvent.RESONATE_15, newPos, GameEvent.Context.of(player));
 
         player.getCooldowns().addCooldown(this, 40);

@@ -83,7 +83,7 @@ public class ItemPotionDiscord extends Item {
         player.teleportTo((ServerLevel) player.level(), newCoords.getX(), newCoords.getY() + 0.1, newCoords.getZ(), player.getXRot(), player.getYRot());
 
         AbstractMirror.trySpawnParticles(level, entity, ParticleTypes.END_ROD, 30, true);
-        level.playSound(null, player.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.75f, 1.5f);
+        level.playSound(null, player.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.7f, 1.5f);
 
         if (!player.gameMode.getGameModeForPlayer().equals(GameType.CREATIVE)) {
             return new ItemStack(Items.GLASS_BOTTLE);

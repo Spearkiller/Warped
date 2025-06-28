@@ -15,7 +15,6 @@ description = '''
 	Warped is a simple utility/magic mod designed around making it easier for you to get to where you need to be.
 	'''
 
-description='''${mod_description}'''
 [[dependencies.${mod_id}]]
     modId="forge"
     mandatory=true

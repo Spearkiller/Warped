@@ -82,13 +82,13 @@ public class ItemPotionRecall extends Item {
         AbstractMirror.trySpawnParticles(level, entity, ParticleTypes.END_ROD, 30, true);
 
         //BlockPos oldCoords = new BlockPos((int)homeCoords.x, (int)homeCoords.y, (int)homeCoords.z);
-        level.playSound(null, player.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.25f, 1.5f);
+        level.playSound(null, player.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.2f, 1.5f);
         sLevel.gameEvent(GameEvent.RESONATE_15, player.blockPosition(), GameEvent.Context.of(player));
 
         player.teleportTo(targetDimension, homeCoords.x(), homeCoords.y() + 0.1, homeCoords.z(), spawnAngle, 0f);
 
         BlockPos newCoords = new BlockPos((int)homeCoords.x, (int)homeCoords.y, (int)homeCoords.z);
-        level.playSound(null, newCoords, SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.25f, 1.5f);
+        level.playSound(null, newCoords, SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.2f, 1.5f);
         sLevel.gameEvent(GameEvent.RESONATE_15, newCoords, GameEvent.Context.of(player));
 
         if (!player.gameMode.getGameModeForPlayer().equals(GameType.CREATIVE)) {
