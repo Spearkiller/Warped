@@ -18,12 +18,16 @@ import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
 
 public class ItemTotemOfAscension extends Item implements ICurioItem {
 
     public ItemTotemOfAscension(Properties pProperties) {
         super(pProperties.stacksTo(1));
+    }
+
+    @Override
+    public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
+        return true;
     }
 
     @Override
