@@ -1,4 +1,4 @@
-package net.spearkiller.warpedrelics;
+package net.spearkiller.warped;
 
 import org.slf4j.Logger;
 
@@ -8,11 +8,11 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.ModContainer;
 
-@Mod(WarpedRelics.MODID)
-public class WarpedRelics {
-    public static final String MODID = "warpedrelics";
+@Mod(Warped.MODID)
+public class Warped {
+    public static final String MODID = "warped";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public WarpedRelics(IEventBus modEventBus, ModContainer modContainer) {
+    public Warped(IEventBus modEventBus, ModContainer modContainer) {
     }
 }

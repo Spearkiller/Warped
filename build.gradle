@@ -39,6 +39,7 @@ neoForge {
         client {
             client()
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+            programArguments.addAll '-XX:+AllowEnhancedClassRedefinition'
         }
 
         server {
