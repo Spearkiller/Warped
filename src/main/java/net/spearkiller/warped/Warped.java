@@ -1,5 +1,22 @@
 package net.spearkiller.warped;
 
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.GameRules;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.spearkiller.warped.effects.ModEffects;
+import net.spearkiller.warped.item.ModCreativeTabs;
+import net.spearkiller.warped.item.ModItems;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -13,6 +30,86 @@ public class Warped {
     public static final String MODID = "warped";
     public static final Logger LOGGER = LogUtils.getLogger();
 
+
+    //Add the gamerules here I guess?
+    public static final  GameRules.Key<GameRules.IntegerValue> MAGIC_MIRROR_BLOCKS_PER_LEVEL_COST =
+            GameRules.register("magicMirrorBlocksPerLevel", GameRules.Category.PLAYER, GameRules.IntegerValue.create(250));
+    public static final  GameRules.Key<GameRules.IntegerValue> MAGIC_MIRROR_MAX_LEVEL_COST =
+            GameRules.register("magicMirrorMaxLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(5));
+    public static final  GameRules.Key<GameRules.IntegerValue> CELESTIAL_MIRROR_BLOCKS_PER_LEVEL_COST =
+            GameRules.register("celestialMirrorBlocksPerLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(500));
+    public static final  GameRules.Key<GameRules.IntegerValue> CELESTIAL_MIRROR_MAX_LEVEL_COST =
+            GameRules.register("celestialMirrorMaxLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(3));
+    public static final  GameRules.Key<GameRules.IntegerValue> FLIGHT_TOTEM_RANGE_MULT =
+            GameRules.register("flightRingRangeMult", GameRules.Category.PLAYER, GameRules.IntegerValue.create(100));
+    public static final  GameRules.Key<GameRules.BooleanValue> REUNION_POTION_FUZZY_TEAMS =
+            GameRules.register("reunionPotionIncludesNonTeamedPlayers", GameRules.Category.PLAYER, GameRules.BooleanValue.create(true));
+    public static final  GameRules.Key<GameRules.BooleanValue> REUNION_POTION_IGNORE_TEAMS =
+            GameRules.register("reunionPotionIgnoreTeams", GameRules.Category.PLAYER, GameRules.BooleanValue.create(false));
+
     public Warped(IEventBus modEventBus, ModContainer modContainer) {
+
+        ModCreativeTabs.register(modEventBus);
+
+        ModItems.register(modEventBus);
+
+        ModEffects.register(modEventBus);
+
+        //ModLootModifier.register(modEventBus);
+
+
+
+        //modEventBus.addListener(this::commonSetup);
+
+        //MinecraftForge.EVENT_BUS.register(this);
+
+        modEventBus.addListener(this::addCreative);
+
+        //context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+    }
+
+    private void addCreative(BuildCreativeModeTabContentsEvent event)
+    {
+
+        addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.MAGIC_MIRROR);
+        addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.CELESTIAL_MIRROR);
+        addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.ABYSSAL_MIRROR);
+        addItemToCreativeTab(event, CreativeModeTabs.TOOLS_AND_UTILITIES, ModItems.TOTEM_OF_ASCENSION);
+
+        addItemToCreativeTab(event, CreativeModeTabs.INGREDIENTS, ModItems.TARNISHED_MIRROR);
+        addItemToCreativeTab(event, CreativeModeTabs.INGREDIENTS, ModItems.WITHERED_TOTEM);
+
+        addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_RECALL_LESSER);
+        addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_RECALL_GREATER);
+        addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_REUNION_LESSER);
+        addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_REUNION_GREATER);
+        //addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_DISCORD_LESSER);
+        //addItemToCreativeTab(event, CreativeModeTabs.FOOD_AND_DRINKS, ModItems.POTION_DISCORD_GREATER);
+
+    }
+
+    private void addItemToCreativeTab(BuildCreativeModeTabContentsEvent event, ResourceKey<CreativeModeTab> tab, DeferredItem item) {
+        if(event.getTabKey() == tab) event.accept(item);
+    }
+
+    @EventBusSubscriber(modid = Warped.MODID)
+    public static class ServerModEvents{
+
+        @SubscribeEvent
+        public static void onIncomingDamage(LivingIncomingDamageEvent event){
+
+            LivingEntity entity = event.getEntity();
+
+            if (event.getEntity().level().isClientSide()) return;
+            if (!event.getSource().is(DamageTypeTags.IS_FALL)) return;
+
+            if (entity.hasEffect(ModEffects.FALL_BREAK)){
+
+                entity.removeEffect(ModEffects.FALL_BREAK);
+                event.setAmount(0);
+                event.setCanceled(true);
+
+            }
+        }
     }
 }
