@@ -37,10 +37,20 @@ public class Warped {
             GameRules.register("magicMirrorBlocksPerLevel", GameRules.Category.PLAYER, GameRules.IntegerValue.create(250));
     public static final  GameRules.Key<GameRules.IntegerValue> MAGIC_MIRROR_MAX_LEVEL_COST =
             GameRules.register("magicMirrorMaxLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(5));
+    public static final  GameRules.Key<GameRules.IntegerValue> MAGIC_MIRROR_WARP_SICKNESS_DURATION =
+            GameRules.register("magicMirrorWarpSicknessDuration", GameRules.Category.PLAYER, GameRules.IntegerValue.create(900));
+
+
     public static final  GameRules.Key<GameRules.IntegerValue> CELESTIAL_MIRROR_BLOCKS_PER_LEVEL_COST =
             GameRules.register("celestialMirrorBlocksPerLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(500));
     public static final  GameRules.Key<GameRules.IntegerValue> CELESTIAL_MIRROR_MAX_LEVEL_COST =
             GameRules.register("celestialMirrorMaxLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(3));
+    public static final  GameRules.Key<GameRules.IntegerValue> CELESTIAL_MIRROR_WARP_SICKNESS_DURATION =
+            GameRules.register("celestialMirrorWarpSicknessDuration", GameRules.Category.PLAYER, GameRules.IntegerValue.create(600));
+
+    public static final  GameRules.Key<GameRules.IntegerValue> ABYSSAL_MIRROR_WARP_SICKNESS_DURATION =
+            GameRules.register("abyssalMirrorWarpSicknessDuration", GameRules.Category.PLAYER, GameRules.IntegerValue.create(300));
+
     public static final  GameRules.Key<GameRules.IntegerValue> FLIGHT_TOTEM_RANGE_MULT =
             GameRules.register("flightRingRangeMult", GameRules.Category.PLAYER, GameRules.IntegerValue.create(100));
     public static final  GameRules.Key<GameRules.BooleanValue> REUNION_POTION_FUZZY_TEAMS =

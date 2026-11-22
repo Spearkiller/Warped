@@ -19,7 +19,7 @@ public class ItemMagicMirror extends AbstractMirror {
     );
 
     public ItemMagicMirror(Properties pProperties, boolean xDimension){
-        super(pProperties, xDimension, DUST_MAGIC_MIRROR, Warped.MAGIC_MIRROR_BLOCKS_PER_LEVEL_COST, Warped.MAGIC_MIRROR_MAX_LEVEL_COST);
+        super(pProperties, xDimension, DUST_MAGIC_MIRROR, Warped.MAGIC_MIRROR_WARP_SICKNESS_DURATION, Warped.MAGIC_MIRROR_BLOCKS_PER_LEVEL_COST, Warped.MAGIC_MIRROR_MAX_LEVEL_COST);
     }
 
 

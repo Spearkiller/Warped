@@ -19,7 +19,7 @@ public class ItemCelestialMirror extends AbstractMirror {
     );
 
     public ItemCelestialMirror(Properties pProperties, boolean xDimension){
-        super(pProperties, xDimension, DUST_CELESTIAL_MIRROR, Warped.CELESTIAL_MIRROR_BLOCKS_PER_LEVEL_COST, Warped.CELESTIAL_MIRROR_MAX_LEVEL_COST);
+        super(pProperties, xDimension, DUST_CELESTIAL_MIRROR, Warped.CELESTIAL_MIRROR_WARP_SICKNESS_DURATION, Warped.CELESTIAL_MIRROR_BLOCKS_PER_LEVEL_COST, Warped.CELESTIAL_MIRROR_MAX_LEVEL_COST);
     }
 
 

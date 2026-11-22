@@ -13,6 +13,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -25,6 +26,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.portal.DimensionTransition;
 import net.minecraft.world.phys.Vec3;
+import net.spearkiller.warped.Warped;
+import net.spearkiller.warped.effects.ModEffects;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,14 +43,16 @@ public abstract class AbstractMirror extends Item {
 
     public final GameRules.Key<GameRules.IntegerValue> COST_RULE;
     public final GameRules.Key<GameRules.IntegerValue> MAX_COST_RULE;
+    public final GameRules.Key<GameRules.IntegerValue> WARP_SICKNESS_DURATION_RULE;
 
-    public AbstractMirror(Properties pProperties, boolean allowCrossDimensions, ParticleOptions dust, GameRules.Key<GameRules.IntegerValue> costRule, GameRules.Key<GameRules.IntegerValue> maxCostRule){
+    public AbstractMirror(Properties pProperties, boolean allowCrossDimensions, ParticleOptions dust, GameRules.Key<GameRules.IntegerValue> warpSicknessDurationRule, GameRules.Key<GameRules.IntegerValue> costRule, GameRules.Key<GameRules.IntegerValue> maxCostRule){
         super(pProperties);
-        ALLOW_CROSS_DIMENSIONAL_TRAVEL = allowCrossDimensions;
-        DUST_TYPE = dust;
+        this.ALLOW_CROSS_DIMENSIONAL_TRAVEL = allowCrossDimensions;
+        this.DUST_TYPE = dust;
 
-        COST_RULE = costRule;
-        MAX_COST_RULE = maxCostRule;
+        this.COST_RULE = costRule;
+        this.MAX_COST_RULE = maxCostRule;
+        this.WARP_SICKNESS_DURATION_RULE = warpSicknessDurationRule;
     }
 
     // ------------------------------------------------------
@@ -69,6 +74,14 @@ public abstract class AbstractMirror extends Item {
 
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+
+        if (player.hasEffect(ModEffects.WARP_SICKESS)){
+            player.displayClientMessage(Component.translatable("info.warped.mirrors.use_cancelled_by_warp_sickness")
+                    .withStyle(ChatFormatting.LIGHT_PURPLE, ChatFormatting.ITALIC), true);
+            player.getCooldowns().addCooldown(this, 20);
+            return InteractionResultHolder.consume(player.getItemInHand(hand));
+        }
+
         player.startUsingItem(hand);
         return InteractionResultHolder.consume(player.getItemInHand(hand));
     }
@@ -93,7 +106,7 @@ public abstract class AbstractMirror extends Item {
         // Get the player's spawn dimension. Yes we have it already if their bed is in the same dimension as them but still
         ServerLevel targetDimension = player.getServer().getLevel(spawnDimension);
 
-
+        //Spawn particles at old location
         trySpawnParticles(level, entity, DUST_TYPE, 60, true);
         trySpawnParticles(level, entity, ParticleTypes.END_ROD, 30, true);
 
@@ -108,6 +121,19 @@ public abstract class AbstractMirror extends Item {
         level.playSound(null, newPos, SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.2f, 1.5f);
         sLevel.gameEvent(GameEvent.RESONATE_15, newPos, GameEvent.Context.of(player));
 
+        boolean real = player.addEffect(new MobEffectInstance(
+                        ModEffects.WARP_SICKESS,
+                        player.level().getGameRules().getRule(WARP_SICKNESS_DURATION_RULE).get() * 20,
+                        0,
+                        false,
+                        false)
+                );
+
+        //if (real) Warped.LOGGER.debug("Adding warp sickness");
+
+        //Spawn particles at new location
+        trySpawnParticles(targetDimension, entity, newPos.getCenter(), DUST_TYPE, 60, true);
+        trySpawnParticles(targetDimension, entity, newPos.getCenter(), ParticleTypes.END_ROD, 30, true);
         
         player.getCooldowns().addCooldown(this, 20);
         return stack;
@@ -152,7 +178,7 @@ public abstract class AbstractMirror extends Item {
         if (spawnPos == null) {
             // Never set a spawn
             player.displayClientMessage(Component.translatable("info.warped.mirrors.missing_or_invalid_spawn_point")
-                    .withStyle(ChatFormatting.RED, ChatFormatting.ITALIC), true);
+                    .withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
             
         player.getCooldowns().addCooldown(this, 20);
             return null;
@@ -180,7 +206,7 @@ public abstract class AbstractMirror extends Item {
         DimensionTransition ds = player.findRespawnPositionAndUseSpawnBlock(false, DimensionTransition.DO_NOTHING);
 
         if (ds.missingRespawnBlock()) {
-            player.displayClientMessage(Component.translatable("info.warped.mirrors.missing_or_invalid_spawn_point").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC), true);
+            player.displayClientMessage(Component.translatable("info.warped.mirrors.missing_or_invalid_spawn_point").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
             
         player.getCooldowns().addCooldown(this, 20);
             return null;
@@ -233,6 +259,12 @@ public abstract class AbstractMirror extends Item {
         if (!(entity instanceof ServerPlayer player) || !(level instanceof ServerLevel sLevel)) return;
 
         sLevel.sendParticles( player, particles, force,player.getX(), player.getY() + 1, player.getZ(),particleCount, 0.5, 0.5, 0.5,0.1 );
+    }
+
+    public static void trySpawnParticles(Level level, LivingEntity entity, Vec3 pos, ParticleOptions particles, int particleCount, boolean force){
+        if (!(entity instanceof ServerPlayer player) || !(level instanceof ServerLevel sLevel)) return;
+
+        sLevel.sendParticles( player, particles, force, pos.x(), pos.y() + 1, pos.z() ,particleCount, 0.5, 0.5, 0.5,0.1 );
     }
 
     /*@Override
