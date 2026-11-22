@@ -54,7 +54,11 @@ public abstract class AbstractMirror extends Item {
     // Methods from Item Class
     // ------------------------------------------------------
 
-    public int getUseDuration(@NotNull ItemStack pStack){
+    public int getUseDuration(ItemStack stack, LivingEntity entity) {
+        return USE_DURATION;
+    }
+
+    public int getUseDuration(ItemStack stack) {
         return USE_DURATION;
     }
 
@@ -62,6 +66,7 @@ public abstract class AbstractMirror extends Item {
     public @NotNull UseAnim getUseAnimation(ItemStack stack) {
         return UseAnim.BOW;
     }
+
     @Override
     public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         player.startUsingItem(hand);
@@ -103,7 +108,8 @@ public abstract class AbstractMirror extends Item {
         level.playSound(null, newPos, SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.2f, 1.5f);
         sLevel.gameEvent(GameEvent.RESONATE_15, newPos, GameEvent.Context.of(player));
 
-        player.getCooldowns().addCooldown(this, 40);
+        
+        player.getCooldowns().addCooldown(this, 20);
         return stack;
     }
 
@@ -146,13 +152,17 @@ public abstract class AbstractMirror extends Item {
         if (spawnPos == null) {
             // Never set a spawn
             player.displayClientMessage(Component.translatable("info.warped.mirrors.missing_or_invalid_spawn_point")
-                    .withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
+                    .withStyle(ChatFormatting.RED, ChatFormatting.ITALIC), true);
+            
+        player.getCooldowns().addCooldown(this, 20);
             return null;
         }
 
         // If spawn is in a different dimension
         if (!spawnDimension.equals(sLevel.dimension()) && !ALLOW_CROSS_DIMENSIONAL_TRAVEL){
             player.displayClientMessage(Component.translatable( "info.warped.mirrors.wrong_dimension").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
+            
+        player.getCooldowns().addCooldown(this, 20);
             return null;
         }
 
@@ -169,8 +179,10 @@ public abstract class AbstractMirror extends Item {
 
         DimensionTransition ds = player.findRespawnPositionAndUseSpawnBlock(false, DimensionTransition.DO_NOTHING);
 
-        if (!ds.missingRespawnBlock()) {
-            player.displayClientMessage(Component.translatable("info.warped.mirrors.missing_or_invalid_spawn_point").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
+        if (ds.missingRespawnBlock()) {
+            player.displayClientMessage(Component.translatable("info.warped.mirrors.missing_or_invalid_spawn_point").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC), true);
+            
+        player.getCooldowns().addCooldown(this, 20);
             return null;
         }
         Vec3 trueSpawnPosition = ds.pos();
@@ -205,6 +217,8 @@ public abstract class AbstractMirror extends Item {
                 levelCost = (int) Math.min(Math.floor(distanceFromSpawn / Math.pow(blocksPerLevel, 2)), maxCost);
                 if (player.experienceLevel < levelCost) {
                     player.displayClientMessage(Component.translatable("info.warped.mirrors.insufficient_levels").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
+                    
+        player.getCooldowns().addCooldown(this, 20);
                     return null;
                 }
             }

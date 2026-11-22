@@ -45,6 +45,7 @@
 
 
   "info.warped.potion_recall.missing_or_invalid_spawn_point": "You tried to remember where home was, but you couldn't quite place it...",
+  "info.warped.potion_recall.use_cancelled_by_warp_sickness": "You tried drinking the potion, but you felt too sick to finish it...",
   "info.warped.potion_recall.wrong_dimension": "You tried to remember home, but it seemed too far away...",
   "info.warped.potion_reunion.forever_alone": "There didn't seem to be anyone around...",
   "info.warped.potion_reunion.next_player": "Target set to %1$s (%2$s/%3$s)",
@@ -56,6 +57,7 @@
   "info.warped.mirrors.wrong_dimension" : "You gazed into the mirror, but you couldn't see home...",
   "info.warped.mirrors.insufficient_levels" : "You gazed into the mirror, but the reflection seemed distant...",
   "info.warped.mirrors.use_cancelled_by_damage": "You gazed into the mirror, but your focus was interrupted!",
+  "info.warped.mirrors.use_cancelled_by_warp_sickness": "You tried gazing into the mirror, but the reflection made you feel sick...",
   "info.warped.potion_reunion.no_player": "You blindly drank the potion without thinking about another person...",
 
   "advancement.warped.tarnished_mirror": "Mirror, Mirror",
