@@ -27,7 +27,11 @@ repositories {
     maven {
         name = "ModMaven"
         url = "https://modmaven.dev"
-
+    }
+    maven {
+        name = "Curios"
+        url = "https://maven.theillusivec4.top/"
+        content { includeGroup 'top.theillusivec4.curios' }
     }
 }
 
@@ -87,10 +91,10 @@ configurations {
 }
 
 dependencies {
-    // compile against the JEI API but do not include it at runtime
     compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
-    // at runtime, use the full JEI jar for NeoForge
     runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+
+    implementation "top.theillusivec4.curios:curios-neoforge:${curiosVersion}+${minecraft_version}"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
