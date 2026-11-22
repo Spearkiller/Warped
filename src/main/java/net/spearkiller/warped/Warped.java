@@ -34,7 +34,7 @@ public class Warped {
 
     //Add the gamerules here I guess?
     public static final  GameRules.Key<GameRules.IntegerValue> MAGIC_MIRROR_BLOCKS_PER_LEVEL_COST =
-            GameRules.register("warpedMagicMirrorBlocksPerLevel", GameRules.Category.PLAYER, GameRules.IntegerValue.create(250));
+            GameRules.register("warpedMagicMirrorBlocksPerLevel", GameRules.Category.PLAYER, GameRules.IntegerValue.create(500));
     public static final  GameRules.Key<GameRules.IntegerValue> MAGIC_MIRROR_MAX_LEVEL_COST =
             GameRules.register("warpedMagicMirrorMaxLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(5));
     public static final  GameRules.Key<GameRules.IntegerValue> MAGIC_MIRROR_WARP_SICKNESS_DURATION =
@@ -42,7 +42,7 @@ public class Warped {
 
 
     public static final  GameRules.Key<GameRules.IntegerValue> CELESTIAL_MIRROR_BLOCKS_PER_LEVEL_COST =
-            GameRules.register("warpedCelestialMirrorBlocksPerLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(500));
+            GameRules.register("warpedCelestialMirrorBlocksPerLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(1000));
     public static final  GameRules.Key<GameRules.IntegerValue> CELESTIAL_MIRROR_MAX_LEVEL_COST =
             GameRules.register("warpedCelestialMirrorMaxLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(3));
     public static final  GameRules.Key<GameRules.IntegerValue> CELESTIAL_MIRROR_WARP_SICKNESS_DURATION =
