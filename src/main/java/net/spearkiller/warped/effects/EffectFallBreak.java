@@ -36,7 +36,7 @@ public class EffectFallBreak extends MobEffect {
 
         Warped.LOGGER.debug("Sending particles");
         sLevel.sendParticles( ParticleTypes.CLOUD, entity.getX(), entity.getY(), entity.getZ(), 5, 0.05, 0.01, 0.05,0.05 );
-        //WarpedMod.getLogger().debug("Ticking " + entity.getUUID());
+        //warped.getLogger().debug("Ticking " + entity.getUUID());
         return true;
     }
 

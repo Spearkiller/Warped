@@ -1,0 +1,33 @@
+{
+  "parent": "warped:get_magic_mirror",
+  "criteria": {
+    "warped:has_celestial_mirror": {
+      "conditions": {
+        "items": [
+          {
+            "items": "warped:celestial_mirror"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.warped.celestial_mirror.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "warped:celestial_mirror"
+    },
+    "title": {
+      "translate": "advancement.warped.celestial_mirror"
+    }
+  },
+  "requirements": [
+    [
+      "warped:has_celestial_mirror"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

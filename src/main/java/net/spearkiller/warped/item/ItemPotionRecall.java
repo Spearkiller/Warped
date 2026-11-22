@@ -98,11 +98,11 @@ public class ItemPotionRecall extends Item {
 
     /*@Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.warpedmod.potion_recall.tooltip_info").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
+        pTooltipComponents.add(Component.translatable("tooltip.warped.potion_recall.tooltip_info").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
         if (!this.ENHANCED_POTION) {
-            pTooltipComponents.add(Component.translatable("tooltip.warpedmod.potion_recall.tooltip_lesser_warnings").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
+            pTooltipComponents.add(Component.translatable("tooltip.warped.potion_recall.tooltip_lesser_warnings").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
         }
-        pTooltipComponents.add(Component.translatable("tooltip.warpedmod.potion_recall.tooltip_warnings").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
+        pTooltipComponents.add(Component.translatable("tooltip.warped.potion_recall.tooltip_warnings").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }*/
 
@@ -126,14 +126,14 @@ public class ItemPotionRecall extends Item {
         //Check that the player has set their spawnpoint at least once.
         if (spawnPos == null) {
             // Never set a spawn
-            player.displayClientMessage(Component.translatable("info.warpedmod.potion_recall.missing_or_invalid_spawn_point")
+            player.displayClientMessage(Component.translatable("info.warped.potion_recall.missing_or_invalid_spawn_point")
                     .withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC), true);
             return null;
         }
 
         // If spawn is in a different dimension
         if (!spawnDimension.equals(sLevel.dimension()) && !ENHANCED_POTION){
-            player.displayClientMessage(Component.translatable("info.warpedmod.potion_recall.wrong_dimension").withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC), true);
+            player.displayClientMessage(Component.translatable("info.warped.potion_recall.wrong_dimension").withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC), true);
             return null;
         }
 
@@ -148,7 +148,7 @@ public class ItemPotionRecall extends Item {
                 true
         );
         if (safeSpawn.isEmpty()) {
-            player.displayClientMessage(Component.translatable("info.warpedmod.potion_recall.missing_or_invalid_spawn_point").withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC), true);
+            player.displayClientMessage(Component.translatable("info.warped.potion_recall.missing_or_invalid_spawn_point").withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC), true);
             return null;
         }
 
@@ -156,7 +156,7 @@ public class ItemPotionRecall extends Item {
         DimensionTransition ds = player.findRespawnPositionAndUseSpawnBlock(false, DimensionTransition.DO_NOTHING);
 
         if (!ds.missingRespawnBlock()) {
-            player.displayClientMessage(Component.translatable("info.warpedmod.potion_recall.missing_or_invalid_spawn_point").withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC), true);
+            player.displayClientMessage(Component.translatable("info.warped.potion_recall.missing_or_invalid_spawn_point").withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC), true);
             return null;
         }
         return ds.pos();

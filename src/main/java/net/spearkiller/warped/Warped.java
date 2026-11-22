@@ -17,6 +17,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.spearkiller.warped.effects.ModEffects;
 import net.spearkiller.warped.item.ModCreativeTabs;
 import net.spearkiller.warped.item.ModItems;
+import net.spearkiller.warped.loot.ModLootModifier;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -55,7 +56,7 @@ public class Warped {
 
         ModEffects.register(modEventBus);
 
-        //ModLootModifier.register(modEventBus);
+        ModLootModifier.register(modEventBus);
 
 
 

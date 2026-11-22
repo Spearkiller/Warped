@@ -145,14 +145,14 @@ public abstract class AbstractMirror extends Item {
         //Check that the player has set their spawnpoint at least once.
         if (spawnPos == null) {
             // Never set a spawn
-            player.displayClientMessage(Component.translatable("info.warpedmod.mirrors.missing_or_invalid_spawn_point")
+            player.displayClientMessage(Component.translatable("info.warped.mirrors.missing_or_invalid_spawn_point")
                     .withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
             return null;
         }
 
         // If spawn is in a different dimension
         if (!spawnDimension.equals(sLevel.dimension()) && !ALLOW_CROSS_DIMENSIONAL_TRAVEL){
-            player.displayClientMessage(Component.translatable( "info.warpedmod.mirrors.wrong_dimension").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
+            player.displayClientMessage(Component.translatable( "info.warped.mirrors.wrong_dimension").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
             return null;
         }
 
@@ -170,7 +170,7 @@ public abstract class AbstractMirror extends Item {
         DimensionTransition ds = player.findRespawnPositionAndUseSpawnBlock(false, DimensionTransition.DO_NOTHING);
 
         if (!ds.missingRespawnBlock()) {
-            player.displayClientMessage(Component.translatable("info.warpedmod.mirrors.missing_or_invalid_spawn_point").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
+            player.displayClientMessage(Component.translatable("info.warped.mirrors.missing_or_invalid_spawn_point").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
             return null;
         }
         Vec3 trueSpawnPosition = ds.pos();
@@ -204,7 +204,7 @@ public abstract class AbstractMirror extends Item {
                 double distanceFromSpawn = player.position().distanceToSqr(trueSpawnPosition);
                 levelCost = (int) Math.min(Math.floor(distanceFromSpawn / Math.pow(blocksPerLevel, 2)), maxCost);
                 if (player.experienceLevel < levelCost) {
-                    player.displayClientMessage(Component.translatable("info.warpedmod.mirrors.insufficient_levels").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
+                    player.displayClientMessage(Component.translatable("info.warped.mirrors.insufficient_levels").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC), true);
                     return null;
                 }
             }

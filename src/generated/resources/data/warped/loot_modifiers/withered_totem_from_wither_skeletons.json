@@ -1,0 +1,14 @@
+{
+  "type": "warped:add_item",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:entities/wither_skeleton"
+    },
+    {
+      "chance": 0.01,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "item": "warped:withered_totem"
+}

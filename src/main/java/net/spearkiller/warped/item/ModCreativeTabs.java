@@ -17,7 +17,7 @@ public class ModCreativeTabs {
 
     public static final Supplier<CreativeModeTab> WARPED_ITEMS_TAB = CREATIVE_MODE_TABS.register("warped_items",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.MAGIC_MIRROR.get()))
-                    .title(Component.translatable("creativetab.warpedmod_items"))
+                    .title(Component.translatable("creativetab.warped_items"))
                     .displayItems((pParameters, pOutput) -> {
 
                         pOutput.accept(ModItems.TARNISHED_MIRROR.get());

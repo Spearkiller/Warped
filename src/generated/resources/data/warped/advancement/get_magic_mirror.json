@@ -1,0 +1,33 @@
+{
+  "parent": "warped:get_tarnished_mirror",
+  "criteria": {
+    "warped:has_magic_mirror": {
+      "conditions": {
+        "items": [
+          {
+            "items": "warped:magic_mirror"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.warped.magic_mirror.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "warped:magic_mirror"
+    },
+    "title": {
+      "translate": "advancement.warped.magic_mirror"
+    }
+  },
+  "requirements": [
+    [
+      "warped:has_magic_mirror"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

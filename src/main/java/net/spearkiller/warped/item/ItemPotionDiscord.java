@@ -71,7 +71,7 @@ public class ItemPotionDiscord extends Item {
 
         BlockPos newCoords = findSafeTeleportPosition(player, level, TELEPORT_RADIUS, 64);
         if (newCoords == null) {
-            player.displayClientMessage(Component.translatable("info.warpedmod.potion_discord.failed_tp")
+            player.displayClientMessage(Component.translatable("info.warped.potion_discord.failed_tp")
                     .withStyle(ChatFormatting.BLUE, ChatFormatting.ITALIC), true);
             return stack;
         }

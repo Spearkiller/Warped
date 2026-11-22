@@ -31,8 +31,8 @@ public class ItemTotemOfAscension extends Item /*implements ICurioItem*/ {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.warpedmod.item_totem_of_ascension.info").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
-        pTooltipComponents.add(Component.translatable("tooltip.warpedmod.item_totem_of_ascension.info2").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
+        pTooltipComponents.add(Component.translatable("tooltip.warped.item_totem_of_ascension.info").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
+        pTooltipComponents.add(Component.translatable("tooltip.warped.item_totem_of_ascension.info2").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 
@@ -40,35 +40,35 @@ public class ItemTotemOfAscension extends Item /*implements ICurioItem*/ {
 
     public static void updateFlightStatus(ServerPlayer player){
 
-        //WarpedMod.getLogger().debug("Checking " + player + " for beacon flight");
+        //warped.getLogger().debug("Checking " + player + " for beacon flight");
 
         boolean hasTotem = isEquipped(player);
-        //WarpedMod.getLogger().debug("Equipped ring: " + hasRing);
-        boolean inBeaconRange = WarpedMod.BeaconFlightTracker.isPlayerInRange(player);
-        //WarpedMod.getLogger().debug("In range: " + inBeaconRange);
+        //warped.getLogger().debug("Equipped ring: " + hasRing);
+        boolean inBeaconRange = warped.BeaconFlightTracker.isPlayerInRange(player);
+        //warped.getLogger().debug("In range: " + inBeaconRange);
 
         boolean shouldHaveFlight = hasTotem && inBeaconRange;
 
         if (shouldHaveFlight) {
             if (!player.getAbilities().mayfly) {
                 player.getAbilities().mayfly = true;
-                //WarpedMod.getLogger().debug(player + " is permitted for takeoff");
+                //warped.getLogger().debug(player + " is permitted for takeoff");
                 player.onUpdateAbilities();
             }
-            WarpedMod.BeaconFlightTracker.flightEnabledPlayers.add(player.getUUID());
+            warped.BeaconFlightTracker.flightEnabledPlayers.add(player.getUUID());
 
 
         } else {
-            //WarpedMod.getLogger().debug(player + " should be prevented from flying.");
+            //warped.getLogger().debug(player + " should be prevented from flying.");
 
             //If they were removed from the set then at some point we gave them flight
-            if (WarpedMod.BeaconFlightTracker.flightEnabledPlayers.remove(player.getUUID())) {
+            if (warped.BeaconFlightTracker.flightEnabledPlayers.remove(player.getUUID())) {
 
                 if (!(player.isCreative() || player.isSpectator())) {
                     player.getAbilities().mayfly = false;
                     player.getAbilities().flying = false;
                     player.onUpdateAbilities();
-                    //WarpedMod.getLogger().debug("Removing flight from " + player.getUUID());
+                    //warped.getLogger().debug("Removing flight from " + player.getUUID());
                     player.addEffect(new MobEffectInstance(ModEffects.FALL_BREAK.get(), -1));
                 }
             }

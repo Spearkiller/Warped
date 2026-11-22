@@ -27,7 +27,7 @@ import java.util.*;
 
 public class ItemPotionReunion extends Item{
     private final boolean ENHANCED_POTION;
-    public static final String TAG_SELECTED_PLAYER = "WarpedModSelectedPlayer";
+    public static final String TAG_SELECTED_PLAYER = "warpedSelectedPlayer";
 
     public ItemPotionReunion(boolean enhanced){
         super(new Properties()
@@ -67,7 +67,7 @@ public class ItemPotionReunion extends Item{
             //Get all players in the world/dimension
             List<ServerPlayer> players = findPlayers(sPlayer);
             if (players.isEmpty()){
-                player.displayClientMessage(Component.translatable("info.warpedmod.potion_reunion.forever_alone")
+                player.displayClientMessage(Component.translatable("info.warped.potion_reunion.forever_alone")
                         .withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC), true);
                 return InteractionResultHolder.success(stack);
             }
@@ -93,7 +93,7 @@ public class ItemPotionReunion extends Item{
             ServerPlayer nextPlayer = players.get(nextIndex);
             stack.getOrCreateTag().putUUID(TAG_SELECTED_PLAYER, nextPlayer.getUUID());
 
-            player.displayClientMessage(Component.translatable("info.warpedmod.potion_reunion.next_player", nextPlayer.getName(), nextIndex+1, players.size())
+            player.displayClientMessage(Component.translatable("info.warped.potion_reunion.next_player", nextPlayer.getName(), nextIndex+1, players.size())
                     .withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC), true);
             return InteractionResultHolder.success(stack);
         }*/
@@ -112,7 +112,7 @@ public class ItemPotionReunion extends Item{
         //Check if the player is drinking the potion before assigning anyone to it
         /*UUID targetUUID;
         if (stack.getTag() == null) {
-            player.displayClientMessage(Component.translatable("info.warpedmod.potion_reunion.no_player")
+            player.displayClientMessage(Component.translatable("info.warped.potion_reunion.no_player")
                     .withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC), true);
         }
         else {
@@ -120,7 +120,7 @@ public class ItemPotionReunion extends Item{
             targetUUID = stack.getTag().getUUID(TAG_SELECTED_PLAYER);
             ServerPlayer targetPlayer = Objects.requireNonNull(player.getServer()).getPlayerList().getPlayer(targetUUID);
             if (targetPlayer == null) {
-                player.displayClientMessage(Component.translatable("info.warpedmod.potion_reunion.missing_player")
+                player.displayClientMessage(Component.translatable("info.warped.potion_reunion.missing_player")
                         .withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC), true);
             }
             else {
@@ -139,7 +139,7 @@ public class ItemPotionReunion extends Item{
                 }
                 //Player has changed dimensions or teams
                 else {
-                    player.displayClientMessage(Component.translatable("info.warpedmod.potion_reunion.missing_player")
+                    player.displayClientMessage(Component.translatable("info.warped.potion_reunion.missing_player")
                             .withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC), true);
                 }
             }
@@ -153,11 +153,11 @@ public class ItemPotionReunion extends Item{
 
     /*@Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.warpedmod.potion_reunion.tooltip_info").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
+        pTooltipComponents.add(Component.translatable("tooltip.warped.potion_reunion.tooltip_info").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
         if (!this.ENHANCED_POTION) {
-            pTooltipComponents.add(Component.translatable("tooltip.warpedmod.potion_reunion.tooltip_lesser_warnings").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
+            pTooltipComponents.add(Component.translatable("tooltip.warped.potion_reunion.tooltip_lesser_warnings").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
         }
-        pTooltipComponents.add(Component.translatable("tooltip.warpedmod.potion_reunion.tooltip_info2").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
+        pTooltipComponents.add(Component.translatable("tooltip.warped.potion_reunion.tooltip_info2").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }*/
 

@@ -29,13 +29,13 @@ public class ItemMagicMirror extends AbstractMirror {
             int blocksPerLevel = Math.max(pLevel.getGameRules().getRule(COST_RULE).get(), 0);
             int maxCost = Math.max(pLevel.getGameRules().getRule(MAX_COST_RULE).get(), 0);
 
-            String pB = WarpedMod.getPlural(blocksPerLevel, "block", "blocks");
-            String mC = WarpedMod.getPlural(maxCost, "level", "levels");
+            String pB = warped.getPlural(blocksPerLevel, "block", "blocks");
+            String mC = warped.getPlural(maxCost, "level", "levels");
 
-            pTooltipComponents.add(Component.translatable("tooltip.warpedmod.magic_mirror.tooltip", blocksPerLevel, pB, maxCost, mC).withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
-            pTooltipComponents.add(Component.translatable("tooltip.warpedmod.magic_mirror.tooltip2", blocksPerLevel, pB, maxCost, mC).withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
-            pTooltipComponents.add(Component.translatable("tooltip.warpedmod.magic_mirror.tooltip_warnings").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
-            pTooltipComponents.add(Component.translatable("tooltip.warpedmod.magic_mirror.tooltip_warnings2").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
+            pTooltipComponents.add(Component.translatable("tooltip.warped.magic_mirror.tooltip", blocksPerLevel, pB, maxCost, mC).withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
+            pTooltipComponents.add(Component.translatable("tooltip.warped.magic_mirror.tooltip2", blocksPerLevel, pB, maxCost, mC).withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
+            pTooltipComponents.add(Component.translatable("tooltip.warped.magic_mirror.tooltip_warnings").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
+            pTooltipComponents.add(Component.translatable("tooltip.warped.magic_mirror.tooltip_warnings2").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
         }
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }*/

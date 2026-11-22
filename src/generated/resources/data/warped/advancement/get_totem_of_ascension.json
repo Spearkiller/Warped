@@ -1,0 +1,34 @@
+{
+  "parent": "warped:get_withered_totem",
+  "criteria": {
+    "warped:has_totem_of_ascension": {
+      "conditions": {
+        "items": [
+          {
+            "items": "warped:totem_of_ascension"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.warped.totem_of_ascension.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "warped:totem_of_ascension"
+    },
+    "title": {
+      "translate": "advancement.warped.totem_of_ascension"
+    }
+  },
+  "requirements": [
+    [
+      "warped:has_totem_of_ascension"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
