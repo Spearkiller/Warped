@@ -34,29 +34,32 @@ public class Warped {
 
     //Add the gamerules here I guess?
     public static final  GameRules.Key<GameRules.IntegerValue> MAGIC_MIRROR_BLOCKS_PER_LEVEL_COST =
-            GameRules.register("magicMirrorBlocksPerLevel", GameRules.Category.PLAYER, GameRules.IntegerValue.create(250));
+            GameRules.register("warpedMagicMirrorBlocksPerLevel", GameRules.Category.PLAYER, GameRules.IntegerValue.create(250));
     public static final  GameRules.Key<GameRules.IntegerValue> MAGIC_MIRROR_MAX_LEVEL_COST =
-            GameRules.register("magicMirrorMaxLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(5));
+            GameRules.register("warpedMagicMirrorMaxLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(5));
     public static final  GameRules.Key<GameRules.IntegerValue> MAGIC_MIRROR_WARP_SICKNESS_DURATION =
-            GameRules.register("magicMirrorWarpSicknessDuration", GameRules.Category.PLAYER, GameRules.IntegerValue.create(900));
+            GameRules.register("warpedMagicMirrorWarpSicknessDuration", GameRules.Category.PLAYER, GameRules.IntegerValue.create(900));
 
 
     public static final  GameRules.Key<GameRules.IntegerValue> CELESTIAL_MIRROR_BLOCKS_PER_LEVEL_COST =
-            GameRules.register("celestialMirrorBlocksPerLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(500));
+            GameRules.register("warpedCelestialMirrorBlocksPerLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(500));
     public static final  GameRules.Key<GameRules.IntegerValue> CELESTIAL_MIRROR_MAX_LEVEL_COST =
-            GameRules.register("celestialMirrorMaxLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(3));
+            GameRules.register("warpedCelestialMirrorMaxLevelCost", GameRules.Category.PLAYER, GameRules.IntegerValue.create(3));
     public static final  GameRules.Key<GameRules.IntegerValue> CELESTIAL_MIRROR_WARP_SICKNESS_DURATION =
-            GameRules.register("celestialMirrorWarpSicknessDuration", GameRules.Category.PLAYER, GameRules.IntegerValue.create(600));
+            GameRules.register("warpedCelestialMirrorWarpSicknessDuration", GameRules.Category.PLAYER, GameRules.IntegerValue.create(600));
 
     public static final  GameRules.Key<GameRules.IntegerValue> ABYSSAL_MIRROR_WARP_SICKNESS_DURATION =
-            GameRules.register("abyssalMirrorWarpSicknessDuration", GameRules.Category.PLAYER, GameRules.IntegerValue.create(300));
+            GameRules.register("warpedAbyssalMirrorWarpSicknessDuration", GameRules.Category.PLAYER, GameRules.IntegerValue.create(300));
+
+    public static final  GameRules.Key<GameRules.IntegerValue> RECALL_POTION_WARP_SICKNESS_DURATION =
+            GameRules.register("warpedRecallPotionWarpSicknessDuration", GameRules.Category.PLAYER, GameRules.IntegerValue.create(900));
 
     public static final  GameRules.Key<GameRules.IntegerValue> FLIGHT_TOTEM_RANGE_MULT =
-            GameRules.register("flightRingRangeMult", GameRules.Category.PLAYER, GameRules.IntegerValue.create(100));
+            GameRules.register("warpedFlightRingRangeMult", GameRules.Category.PLAYER, GameRules.IntegerValue.create(100));
     public static final  GameRules.Key<GameRules.BooleanValue> REUNION_POTION_FUZZY_TEAMS =
-            GameRules.register("reunionPotionIncludesNonTeamedPlayers", GameRules.Category.PLAYER, GameRules.BooleanValue.create(true));
+            GameRules.register("warpedReunionPotionIncludesNonTeamedPlayers", GameRules.Category.PLAYER, GameRules.BooleanValue.create(true));
     public static final  GameRules.Key<GameRules.BooleanValue> REUNION_POTION_IGNORE_TEAMS =
-            GameRules.register("reunionPotionIgnoreTeams", GameRules.Category.PLAYER, GameRules.BooleanValue.create(false));
+            GameRules.register("warpedReunionPotionIgnoreTeams", GameRules.Category.PLAYER, GameRules.BooleanValue.create(false));
 
     public Warped(IEventBus modEventBus, ModContainer modContainer) {
 
@@ -122,5 +125,10 @@ public class Warped {
 
             }
         }
+    }
+
+    public static String getPlural(int amount, String singular, String plural){
+        if (amount == 1) return singular;
+        return plural;
     }
 }

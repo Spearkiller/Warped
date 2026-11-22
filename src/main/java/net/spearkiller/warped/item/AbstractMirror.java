@@ -16,10 +16,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
@@ -121,15 +118,15 @@ public abstract class AbstractMirror extends Item {
         level.playSound(null, newPos, SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.2f, 1.5f);
         sLevel.gameEvent(GameEvent.RESONATE_15, newPos, GameEvent.Context.of(player));
 
-        boolean real = player.addEffect(new MobEffectInstance(
-                        ModEffects.WARP_SICKESS,
-                        player.level().getGameRules().getRule(WARP_SICKNESS_DURATION_RULE).get() * 20,
-                        0,
-                        false,
-                        false)
-                );
-
-        //if (real) Warped.LOGGER.debug("Adding warp sickness");
+        if (!player.gameMode.getGameModeForPlayer().equals(GameType.CREATIVE)) {
+            player.addEffect(new MobEffectInstance(
+                    ModEffects.WARP_SICKESS,
+                    player.level().getGameRules().getRule(Warped.RECALL_POTION_WARP_SICKNESS_DURATION).get() * 20,
+                    0,
+                    false,
+                    false)
+            );
+        }
 
         //Spawn particles at new location
         trySpawnParticles(targetDimension, entity, newPos.getCenter(), DUST_TYPE, 60, true);
@@ -152,7 +149,7 @@ public abstract class AbstractMirror extends Item {
 
         //this could probably be changed to be client-side only. Whaddaya gonna do?
         if (elapsed % 10 == 0 && remainingUseDuration > 0) {
-            sLevel.playSound(null, player.blockPosition(), SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, 0.75f, 2.0f);
+            sLevel.playSound(null, player.blockPosition(), SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, 0.2f, 2.0f);
             sLevel.gameEvent(GameEvent.RESONATE_15, player.position(), GameEvent.Context.of(player));
         }
     }
@@ -195,14 +192,6 @@ public abstract class AbstractMirror extends Item {
         ServerLevel targetDimension = player.getServer().getLevel(spawnDimension);
 
         // Check the home bed is valid and unobstructed (basically, do we have somewhere we can teleport to?) - Part II
-        /*Optional<Vec3> safeSpawn = ServerPlayer.findRespawnAndUseSpawnBlock(
-                targetDimension,
-                spawnPos,
-                spawnAngle,
-                false,
-                true
-        )*/
-
         DimensionTransition ds = player.findRespawnPositionAndUseSpawnBlock(false, DimensionTransition.DO_NOTHING);
 
         if (ds.missingRespawnBlock()) {

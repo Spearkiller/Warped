@@ -21,7 +21,6 @@
   "tooltip.warped.magic_mirror.tooltip": "Teleports the player to their spawn point",
   "tooltip.warped.magic_mirror.tooltip2": "Costs 1 level for every %1$s %2$s, max of %3$s %4$s",
   "tooltip.warped.magic_mirror.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point",
-  "tooltip.warped.magic_mirror.tooltip_warnings2": "Cannot be used across dimensions",
 
   "tooltip.warped.celestial_mirror.tooltip": "Teleports the player to their spawn point",
   "tooltip.warped.celestial_mirror.tooltip2": "Costs 1 level for every %1$s %2$s, max of %3$s %4$s",
@@ -33,35 +32,36 @@
   "tooltip.warped.abyssal_mirror.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point",
 
   "tooltip.warped.potion_recall.tooltip_info": "Teleports the player to their spawn point",
-  "tooltip.warped.potion_recall.tooltip_lesser_warnings": "Does not work across dimensions",
   "tooltip.warped.potion_recall.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point",
 
   "tooltip.warped.potion_reunion.tooltip_info": "Teleports the player to another player of their choice",
-  "tooltip.warped.potion_reunion.tooltip_lesser_warnings": "Cannot teleport to players in other dimensions",
   "tooltip.warped.potion_reunion.tooltip_info2": "Crouch + right click to select player",
 
   "tooltip.warped.item_totem_of_ascension.info": "Grants the player flight when within range of a beacon",
   "tooltip.warped.item_totem_of_ascension.info2": "Higher level beacons have a greater range",
 
+  "tooltip.warped.generic_toolip.hold_shift": "Hold SHIFT for more information",
+  "tooltip.warped.generic_toolip.inflicts_warp_sickness": "Inflicts Warp Sickness when used.",
+  "tooltip.warped.generic_toolip.no_interdimensional_travel": "Cannot be used across dimensions.",
 
   "info.warped.potion_recall.missing_or_invalid_spawn_point": "You tried to remember where home was, but you couldn't quite place it...",
   "info.warped.potion_recall.wrong_dimension": "You tried to remember home, but it seemed too far away...",
   "info.warped.potion_reunion.forever_alone": "There didn't seem to be anyone around...",
   "info.warped.potion_reunion.next_player": "Target set to %1$s (%2$s/%3$s)",
   "info.warped.potion_reunion.missing_player": "You tried thinking of someone, but they seemed so far away...",
+  "info.warped.potion_reunion.no_player": "You blindly drank the potion without thinking about another person...",
   "info.warped.potion_discord.failed_tp": "You braced yourself, but nothing happened...?",
 
-  "info.warped.potion.use_cancelled_by_warp_sickness": "You tried drinking the potion, but you felt too sick to finish it...",
+  "info.warped.potions.use_cancelled_by_warp_sickness": "You tried drinking the potion, but you felt too sick to finish it...",
 
   "info.warped.mirrors.missing_or_invalid_spawn_point" : "You gazed into the mirror, but there was nothing on the other side...",
   "info.warped.mirrors.wrong_dimension" : "You gazed into the mirror, but you couldn't see home...",
   "info.warped.mirrors.insufficient_levels" : "You gazed into the mirror, but the reflection seemed distant...",
   "info.warped.mirrors.use_cancelled_by_damage": "You gazed into the mirror, but your focus was interrupted!",
   "info.warped.mirrors.use_cancelled_by_warp_sickness": "You tried gazing into the mirror, but you felt light-headed...",
-  "info.warped.potion_reunion.no_player": "You blindly drank the potion without thinking about another person...",
 
   "advancement.warped.tarnished_mirror": "Mirror, Mirror",
-  "advancement.warped.tarnished_mirror.desc": "Find a Tarnished Mirror in a Trail or Ocean Ruin",
+  "advancement.warped.tarnished_mirror.desc": "Find a Tarnished Mirror in a Trail or Cold Ocean Ruin",
   "advancement.warped.magic_mirror": "Upon Reflection...",
   "advancement.warped.magic_mirror.desc": "Restore a Tarnished Mirror",
   "advancement.warped.celestial_mirror": "Seeing Stars",
