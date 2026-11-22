@@ -15,8 +15,8 @@ public class ModEffects {
     public static final DeferredHolder<MobEffect, EffectFallBreak> FALL_BREAK = EFFECTS.register(
             "fall_break", () -> new EffectFallBreak(MobEffectCategory.BENEFICIAL, 0xFECBE6));
 
-    public static final DeferredHolder<MobEffect, EffectFallBreak> WARP_SICKESS = EFFECTS.register(
-            "warp_sickness", () -> new EffectFallBreak(MobEffectCategory.HARMFUL, 0x4E1382));
+    public static final DeferredHolder<MobEffect, EffectWarpSickness> WARP_SICKESS = EFFECTS.register(
+            "warp_sickness", () -> new EffectWarpSickness(MobEffectCategory.HARMFUL, 0x4E1382));
 
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);
