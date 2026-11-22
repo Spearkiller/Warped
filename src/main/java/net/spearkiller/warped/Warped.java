@@ -3,7 +3,9 @@ package net.spearkiller.warped;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
@@ -13,8 +15,12 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.MobEffectEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.spearkiller.warped.effects.ModEffects;
+import net.spearkiller.warped.item.ItemTotemOfAscension;
 import net.spearkiller.warped.item.ModCreativeTabs;
 import net.spearkiller.warped.item.ModItems;
 import net.spearkiller.warped.loot.ModLootModifier;
@@ -25,6 +31,8 @@ import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.ModContainer;
+
+import java.util.*;
 
 @Mod(Warped.MODID)
 public class Warped {
@@ -125,10 +133,45 @@ public class Warped {
 
             }
         }
+
+        @SubscribeEvent
+        public static void onEffectExpired(MobEffectEvent.Expired event) {
+            LivingEntity entity = event.getEntity();
+            if (event.getEffectInstance().is(ModEffects.ASCENSION)) {
+                Warped.addFallBreak(entity, event.getEffectInstance());
+            }
+        }
+
+        @SubscribeEvent
+        public static void onEffectRemoved(MobEffectEvent.Remove event) {
+            LivingEntity entity = event.getEntity();
+            if (event.getEffectInstance().is(ModEffects.ASCENSION)) {
+                Warped.addFallBreak(entity, event.getEffectInstance());
+            }
+        }
+    }
+
+    private static void addFallBreak(LivingEntity entity, MobEffectInstance instance){
+        if (!entity.onGround()) {
+            entity.addEffect(new MobEffectInstance(
+                    ModEffects.FALL_BREAK, -1, instance.getAmplifier(), instance.isAmbient(), instance.isVisible(), instance.showIcon()
+            ));
+        }
     }
 
     public static String getPlural(int amount, String singular, String plural){
         if (amount == 1) return singular;
         return plural;
+    }
+
+    public static class BeaconFlightTracker {
+        public static final Map<UUID, Integer> playersInBeaconRange = new HashMap<>();
+        public static final Set<UUID> flightEnabledPlayers = new HashSet<>();
+        public static final int GRACE_PERIOD_TICKS = 85; //Beacons check every 4 seconds.
+
+        public static boolean isPlayerInRange(ServerPlayer player) {
+            Integer lastSeen = playersInBeaconRange.get(player.getUUID());
+            return lastSeen != null && player.tickCount - lastSeen < GRACE_PERIOD_TICKS;
+        }
     }
 }

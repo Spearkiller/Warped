@@ -8,18 +8,24 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.spearkiller.warped.Warped;
+import net.spearkiller.warped.effects.ModEffects;
 import org.jetbrains.annotations.Nullable;
+import top.theillusivec4.curios.api.CuriosApi;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.type.capability.ICurioItem;
+import top.theillusivec4.curios.api.type.capability.ICuriosItemHandler;
 
 import java.util.List;
 import java.util.Optional;
 
-public class ItemTotemOfAscension extends Item /*implements ICurioItem*/ {
+public class ItemTotemOfAscension extends Item implements ICurioItem {
 
     public ItemTotemOfAscension(Properties pProperties) {
         super(pProperties.stacksTo(1));
     }
 
-    /*@Override
+    @Override
     public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
         return true;
     }
@@ -30,53 +36,29 @@ public class ItemTotemOfAscension extends Item /*implements ICurioItem*/ {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+    public void appendHoverText(ItemStack pStack, Item.TooltipContext context, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         pTooltipComponents.add(Component.translatable("tooltip.warped.item_totem_of_ascension.info").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
         pTooltipComponents.add(Component.translatable("tooltip.warped.item_totem_of_ascension.info2").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        super.appendHoverText(pStack, context, pTooltipComponents, pIsAdvanced);
     }
 
-
-
-    public static void updateFlightStatus(ServerPlayer player){
+    public static void updateFlightStatus(ServerPlayer player, int duration){
 
         //warped.getLogger().debug("Checking " + player + " for beacon flight");
 
-        boolean hasTotem = isEquipped(player);
+        //boolean hasTotem = isEquipped(player);
         //warped.getLogger().debug("Equipped ring: " + hasRing);
-        boolean inBeaconRange = warped.BeaconFlightTracker.isPlayerInRange(player);
+        //boolean inBeaconRange = Warped.BeaconFlightTracker.isPlayerInRange(player);
         //warped.getLogger().debug("In range: " + inBeaconRange);
 
-        boolean shouldHaveFlight = hasTotem && inBeaconRange;
+        //boolean shouldHaveFlight = hasTotem && inBeaconRange;
 
-        if (shouldHaveFlight) {
-            if (!player.getAbilities().mayfly) {
-                player.getAbilities().mayfly = true;
-                //warped.getLogger().debug(player + " is permitted for takeoff");
-                player.onUpdateAbilities();
-            }
-            warped.BeaconFlightTracker.flightEnabledPlayers.add(player.getUUID());
-
-
-        } else {
-            //warped.getLogger().debug(player + " should be prevented from flying.");
-
-            //If they were removed from the set then at some point we gave them flight
-            if (warped.BeaconFlightTracker.flightEnabledPlayers.remove(player.getUUID())) {
-
-                if (!(player.isCreative() || player.isSpectator())) {
-                    player.getAbilities().mayfly = false;
-                    player.getAbilities().flying = false;
-                    player.onUpdateAbilities();
-                    //warped.getLogger().debug("Removing flight from " + player.getUUID());
-                    player.addEffect(new MobEffectInstance(ModEffects.FALL_BREAK.get(), -1));
-                }
-            }
-        }
+        //if (shouldHaveFlight) Warped.BeaconFlightTracker.flightEnabledPlayers.add(player.getUUID());
+        if (isEquipped(player)) player.addEffect(new MobEffectInstance(ModEffects.ASCENSION, duration, 0, true, true));
     }
 
     public static boolean isEquipped(ServerPlayer player){
-        Optional<ICuriosItemHandler> curios = CuriosApi.getCuriosInventory(player).resolve();
+        Optional<ICuriosItemHandler> curios = CuriosApi.getCuriosInventory(player);
 
         if (curios.isEmpty()) return false;
 
@@ -93,5 +75,5 @@ public class ItemTotemOfAscension extends Item /*implements ICurioItem*/ {
         }
 
         return false;
-    }*/
+    }
 }

@@ -18,6 +18,9 @@ public class ModEffects {
     public static final DeferredHolder<MobEffect, EffectWarpSickness> WARP_SICKESS = EFFECTS.register(
             "warp_sickness", () -> new EffectWarpSickness(MobEffectCategory.HARMFUL, 0x4E1382));
 
+    public static final DeferredHolder<MobEffect, EffectAscension> ASCENSION = EFFECTS.register(
+            "ascension", () -> new EffectAscension(MobEffectCategory.BENEFICIAL, 0xFDFFA8));
+
     public static void register(IEventBus eventBus) {
         EFFECTS.register(eventBus);
     }
