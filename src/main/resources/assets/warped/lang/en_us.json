@@ -52,7 +52,7 @@
   "info.warped.potion_reunion.no_player": "You blindly drank the potion without thinking about another person...",
   "info.warped.potion_discord.failed_tp": "You braced yourself, but nothing happened...?",
 
-  "info.warped.potions.use_cancelled_by_warp_sickness": "You tried drinking the potion, but you felt too sick to finish it...",
+  "info.warped.potions.use_cancelled_by_warp_sickness": "You tried drinking the potion, but the smell made your stomach churn...",
 
   "info.warped.mirrors.missing_or_invalid_spawn_point" : "You gazed into the mirror, but there was nothing on the other side...",
   "info.warped.mirrors.wrong_dimension" : "You gazed into the mirror, but you couldn't see home...",
