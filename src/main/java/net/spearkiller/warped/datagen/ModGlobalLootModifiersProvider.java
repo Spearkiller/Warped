@@ -55,8 +55,8 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                 new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("archaeology/trail_ruins_rare")).build()
         }, ModItems.TARNISHED_MIRROR.get()));
 
-        this.add("tarnished_mirror_from_desert_pyramid", new AddSusItemModifier(new LootItemCondition[]{
-                new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("archaeology/desert_pyramid")).build()
+        this.add("tarnished_mirror_from_ocean_ruin", new AddSusItemModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("archaeology/ocean_ruin_cold")).build()
         }, ModItems.TARNISHED_MIRROR.get()));
 
     }
