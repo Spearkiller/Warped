@@ -126,7 +126,7 @@ public class ItemPotionRecall extends Item {
     public void appendHoverText(ItemStack pStack, Item.TooltipContext context, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
 
         int duration = context.level().getGameRules().getRule(Warped.RECALL_POTION_WARP_SICKNESS_DURATION).get() * 20;
-        PotionContents.addPotionTooltip(
+        if (duration > 0) PotionContents.addPotionTooltip(
                 List.of(new MobEffectInstance(ModEffects.WARP_SICKESS, duration, 0)),
                 pTooltipComponents::add,
                 1.0f, 20.0f
