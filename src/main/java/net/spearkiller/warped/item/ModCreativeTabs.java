@@ -4,9 +4,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.spearkiller.warped.Warped;
+import net.spearkiller.warped.events.ModBrewingRecipes;
 
 import java.util.function.Supplier;
 
@@ -32,6 +35,8 @@ public class ModCreativeTabs {
                         pOutput.accept(ModItems.POTION_REUNION_GREATER.get());
                         //pOutput.accept(ModItems.POTION_DISCORD_LESSER.get());
                         //pOutput.accept(ModItems.POTION_DISCORD_GREATER.get());
+                        pOutput.accept(PotionContents.createItemStack(Items.POTION, ModBrewingRecipes.ASCENSION));
+                        pOutput.accept(PotionContents.createItemStack(Items.POTION, ModBrewingRecipes.LONG_ASCENSION));
 
                     })
                     .build());
