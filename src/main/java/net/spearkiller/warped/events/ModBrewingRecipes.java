@@ -27,6 +27,7 @@ public class ModBrewingRecipes {
 
     public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(Registries.POTION, Warped.MODID );
 
+    //The more and more I use these the more I regret not just making a different class but I'm too LAZY!!!
     public static final DeferredHolder<Potion, Potion> ASCENSION =
             POTIONS.register("ascension",
                     () -> new Potion(

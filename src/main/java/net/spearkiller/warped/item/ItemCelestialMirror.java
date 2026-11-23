@@ -30,6 +30,10 @@ public class ItemCelestialMirror extends AbstractMirror {
 
     @Override
     public void appendHoverText(ItemStack pStack, Item.TooltipContext context, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        if (context.level() == null) {
+            super.appendHoverText(pStack, context, pTooltipComponents, pIsAdvanced);
+            return;
+        }
         if (context.level() != null) {
             int duration = context.level().getGameRules().getRule(Warped.CELESTIAL_MIRROR_WARP_SICKNESS_DURATION).get() * 20;
             if (duration > 0) PotionContents.addPotionTooltip(
