@@ -20,11 +20,11 @@ public class AddItemModifier extends LootModifier {
 
     public static final MapCodec<AddItemModifier> CODEC = RecordCodecBuilder.mapCodec(inst ->
             LootModifier.codecStart(inst).and(
-                    BuiltInRegistries.ITEM.byNameCodec().fieldOf("item").forGetter(e -> e.item)).apply(inst, AddItemModifier::new));
-    private final Item item;
+                    ItemStack.CODEC.fieldOf("item").forGetter(e -> e.item)).apply(inst, AddItemModifier::new));
+    private final ItemStack item;
 
 
-    public AddItemModifier(LootItemCondition[] conditionsIn, Item i) {
+    public AddItemModifier(LootItemCondition[] conditionsIn, ItemStack i) {
         super(conditionsIn);
         this.item = i;
     }
@@ -35,7 +35,7 @@ public class AddItemModifier extends LootModifier {
             if (!cond.test(lootContext)) return generatedLoot;
         }
 
-        generatedLoot.add(new ItemStack(this.item));
+        generatedLoot.add(this.item.copy());
 
         return generatedLoot;
     }

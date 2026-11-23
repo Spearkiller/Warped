@@ -3,11 +3,15 @@ package net.spearkiller.warped.datagen;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
 import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 import net.spearkiller.warped.Warped;
+import net.spearkiller.warped.effects.ModEffects;
+import net.spearkiller.warped.events.ModBrewingRecipes;
 import net.spearkiller.warped.item.ModItems;
 import net.spearkiller.warped.loot.AddItemModifier;
 import net.spearkiller.warped.loot.AddSusItemModifier;
@@ -26,14 +30,14 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                 new AddItemModifier(new LootItemCondition[]{
                     new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("entities/wither_skeleton")).build(),
                 LootItemRandomChanceCondition.randomChance(0.01f).build()
-        }, ModItems.WITHERED_TOTEM.get()));
+        }, ModItems.WITHERED_TOTEM.toStack()));
 
 
         this.add("withered_totem_from_nether_fortresses", new AddItemModifier(
                 new LootItemCondition[]{
                     new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("chests/nether_bridge")).build(),
-                LootItemRandomChanceCondition.randomChance(0.25f).build()
-        }, ModItems.WITHERED_TOTEM.get()));
+                LootItemRandomChanceCondition.randomChance(0.1f).build()
+        }, ModItems.WITHERED_TOTEM.toStack()));
 
         String[] recallLocations = {
                 "abandoned_mineshaft",
@@ -46,10 +50,22 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
             this.add("recall_potion_from_" + l,
                     new AddItemModifier(new LootItemCondition[]{
                         new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("chests/"+l)).build(),
-                    LootItemRandomChanceCondition.randomChance(0.25f).build()
+                    LootItemRandomChanceCondition.randomChance(0.4f).build()
 
-            }, ModItems.POTION_RECALL_LESSER.get()));
+            }, ModItems.POTION_RECALL_LESSER.toStack()));
         }
+
+        this.add("greater_recall_potion_from_end_city", new AddItemModifier(
+                new LootItemCondition[]{
+                        new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("chests/end_city_treasure")).build(),
+                        LootItemRandomChanceCondition.randomChance(0.5f).build()
+                }, ModItems.POTION_RECALL_GREATER.toStack()));
+
+        this.add("ascension_potion_from_end_city", new AddItemModifier(
+                new LootItemCondition[]{
+                        new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("chests/end_city_treasure")).build(),
+                        LootItemRandomChanceCondition.randomChance(0.35f).build()
+                }, PotionContents.createItemStack(Items.POTION, ModBrewingRecipes.ASCENSION)));
 
         this.add("tarnished_mirror_from_trail_ruins", new AddSusItemModifier(new LootItemCondition[]{
                 new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("archaeology/trail_ruins_rare")).build()

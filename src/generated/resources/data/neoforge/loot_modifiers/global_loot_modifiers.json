@@ -6,6 +6,8 @@
     "warped:recall_potion_from_simple_dungeon",
     "warped:recall_potion_from_stronghold_corridor",
     "warped:recall_potion_from_stronghold_crossing",
+    "warped:greater_recall_potion_from_end_city",
+    "warped:ascension_potion_from_end_city",
     "warped:tarnished_mirror_from_trail_ruins",
     "warped:tarnished_mirror_from_ocean_ruin"
   ],
