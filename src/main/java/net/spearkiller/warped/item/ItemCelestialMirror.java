@@ -51,9 +51,7 @@ public class ItemCelestialMirror extends AbstractMirror {
             }
             else {
                 pTooltipComponents.add(Component.translatable("tooltip.warped.generic_toolip.hold_shift").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
-                super.appendHoverText(pStack, context, pTooltipComponents, pIsAdvanced);
             }
-
         }
         super.appendHoverText(pStack, context, pTooltipComponents, pIsAdvanced);
     }

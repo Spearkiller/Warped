@@ -1,6 +1,7 @@
 package net.spearkiller.warped.item;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
@@ -11,16 +12,19 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.scores.Team;
 import net.spearkiller.warped.Warped;
+import net.spearkiller.warped.effects.ModEffects;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
@@ -58,14 +62,14 @@ public class ItemPotionReunion extends Item{
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        /*if (player.isShiftKeyDown()){
+        if (player.isShiftKeyDown()){
             ItemStack stack = player.getItemInHand(hand);
 
             if (!(level instanceof ServerLevel sLevel)) return InteractionResultHolder.success(stack);
             if (!(player instanceof ServerPlayer sPlayer)) return InteractionResultHolder.success(stack);
 
             //Get all players in the world/dimension
-            List<ServerPlayer> players = findPlayers(sPlayer);
+            List<ServerPlayer> players = findPlayers(sPlayer, (ItemPotionReunion)stack.getItem());
             if (players.isEmpty()){
                 player.displayClientMessage(Component.translatable("info.warped.potion_reunion.forever_alone")
                         .withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC), true);
@@ -74,29 +78,31 @@ public class ItemPotionReunion extends Item{
 
             //Get the current index so we can work out who the next one is.
             //If current index can't be found, then it'll just reset to zero.
+
+
             UUID current;
-            if (stack.getTag() == null) current = null;
-            else current = stack.getTag().getUUID(TAG_SELECTED_PLAYER);
+            if (!player.getPersistentData().contains(TAG_SELECTED_PLAYER) || player.getPersistentData().getUUID(TAG_SELECTED_PLAYER) == null) {
+                current = players.getFirst().getUUID();
+            }
+            else current = player.getPersistentData().getUUID(TAG_SELECTED_PLAYER);
 
             int currentIndex = -1;
-            if (current != null){
-                for (int i = 0; i < players.size(); i++){
-                    if (players.get(i).getUUID().equals(current)) {
-                        currentIndex = i;
-                        break;
-                    }
+            for (int i = 0; i < players.size(); i++){
+                if (players.get(i).getUUID().equals(current)) {
+                    currentIndex = i;
+                    break;
                 }
             }
 
             //Get next player
             int nextIndex = (currentIndex + 1) % players.size();
             ServerPlayer nextPlayer = players.get(nextIndex);
-            stack.getOrCreateTag().putUUID(TAG_SELECTED_PLAYER, nextPlayer.getUUID());
+            player.getPersistentData().putUUID(TAG_SELECTED_PLAYER, nextPlayer.getUUID());
 
             player.displayClientMessage(Component.translatable("info.warped.potion_reunion.next_player", nextPlayer.getName(), nextIndex+1, players.size())
                     .withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC), true);
             return InteractionResultHolder.success(stack);
-        }*/
+        }
 
         player.startUsingItem(hand);
         return InteractionResultHolder.consume(player.getItemInHand(hand));
@@ -110,14 +116,15 @@ public class ItemPotionReunion extends Item{
         //Rerun player check, to make sure player doesn't end up at an invalid player
 
         //Check if the player is drinking the potion before assigning anyone to it
-        /*UUID targetUUID;
-        if (stack.getTag() == null) {
+        UUID targetUUID;
+
+        if (!player.getPersistentData().contains(TAG_SELECTED_PLAYER) || player.getPersistentData().getUUID(TAG_SELECTED_PLAYER) == null) {
             player.displayClientMessage(Component.translatable("info.warped.potion_reunion.no_player")
                     .withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC), true);
         }
         else {
             //Check assigned player is still in the sever
-            targetUUID = stack.getTag().getUUID(TAG_SELECTED_PLAYER);
+            targetUUID = player.getPersistentData().getUUID(TAG_SELECTED_PLAYER);
             ServerPlayer targetPlayer = Objects.requireNonNull(player.getServer()).getPlayerList().getPlayer(targetUUID);
             if (targetPlayer == null) {
                 player.displayClientMessage(Component.translatable("info.warped.potion_reunion.missing_player")
@@ -125,7 +132,7 @@ public class ItemPotionReunion extends Item{
             }
             else {
                 //Player is still in the server and accessible
-                if (checkPlayer(targetPlayer, player)){
+                if (checkPlayer(targetPlayer, player, (ItemPotionReunion) stack.getItem())){
                     ServerLevel targetDimension = targetPlayer.serverLevel();
 
                     level.playSound(null, player.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.2f, 1.5f);
@@ -134,7 +141,10 @@ public class ItemPotionReunion extends Item{
                     player.teleportTo(targetDimension, targetPlayer.blockPosition().getX(), targetPlayer.blockPosition().getY() + 0.1, targetPlayer.blockPosition().getZ(), targetPlayer.getXRot(), targetPlayer.getYRot());
 
                     AbstractMirror.trySpawnParticles(level, entity, ParticleTypes.END_ROD, 30, true);
-                    level.playSound(null, targetPlayer.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.2f, 1.5f);
+                    level.playSound(null, entity.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.2f, 1.5f);
+
+                    AbstractMirror.trySpawnParticles(targetDimension, targetPlayer, ParticleTypes.END_ROD, 30, true);
+                    targetDimension.playSound(null, targetPlayer.blockPosition(), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, 0.2f, 1.5f);
                     targetDimension.gameEvent(GameEvent.RESONATE_15, targetPlayer.position(), GameEvent.Context.of(player));
                 }
                 //Player has changed dimensions or teams
@@ -143,7 +153,7 @@ public class ItemPotionReunion extends Item{
                             .withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC), true);
                 }
             }
-        }*/
+        }
 
         if (!player.gameMode.getGameModeForPlayer().equals(GameType.CREATIVE)) {
             return new ItemStack(Items.GLASS_BOTTLE);
@@ -151,38 +161,44 @@ public class ItemPotionReunion extends Item{
         return stack;
     }
 
-    /*@Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.warped.potion_reunion.tooltip_info").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
-        if (!this.ENHANCED_POTION) {
-            pTooltipComponents.add(Component.translatable("tooltip.warped.potion_reunion.tooltip_lesser_warnings").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
+    @Override
+    public void appendHoverText(ItemStack pStack, Item.TooltipContext context, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+
+        int duration = context.level().getGameRules().getRule(Warped.RECALL_POTION_WARP_SICKNESS_DURATION).get() * 20;
+        if (duration > 0) PotionContents.addPotionTooltip(
+                List.of(new MobEffectInstance(ModEffects.WARP_SICKESS, duration, 0)),
+                pTooltipComponents::add,
+                1.0f, 20.0f
+        );
+
+        if (Screen.hasShiftDown()){
+            pTooltipComponents.add(Component.translatable("tooltip.warped.potion_reunion.tooltip_info").withStyle(ChatFormatting.ITALIC));
+            if (!this.ENHANCED_POTION) {
+                pTooltipComponents.add(Component.translatable("tooltip.warped.generic_toolip.no_interdimensional_travel").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
+            }
+            pTooltipComponents.add(Component.translatable("tooltip.warped.potion_reunion.tooltip_info2").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
         }
-        pTooltipComponents.add(Component.translatable("tooltip.warped.potion_reunion.tooltip_info2").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
-    }*/
+        else {
+            pTooltipComponents.add(Component.translatable("tooltip.warped.generic_toolip.hold_shift").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
+        }
+        super.appendHoverText(pStack, context, pTooltipComponents, pIsAdvanced);
+    }
 
     // ------------------------------------------------------
     // Custom methods
     // ------------------------------------------------------
 
-    private List<ServerPlayer> findPlayers(ServerPlayer player) {
+    private static List<ServerPlayer> findPlayers(ServerPlayer player, ItemPotionReunion i) {
 
-        List<ServerPlayer> players = new ArrayList<>();
-
-        for (ServerPlayer s: player.server.getPlayerList().getPlayers()){
-            if (!checkPlayer(s, player)) continue;
-            players.add(s);
-        }
-
-        return players;
+        return player.server.getPlayerList().getPlayers().stream().filter(p -> checkPlayer(p, player, i)).toList();
     }
 
-    private boolean checkPlayer(ServerPlayer s, ServerPlayer p){
+    private static boolean checkPlayer(ServerPlayer s, ServerPlayer p, ItemPotionReunion i){
         //Skip yourself
         if (s.getUUID().equals(p.getUUID())) return false;
 
         //Skip players in other dimensions if this is not a greater potion
-        if (!this.ENHANCED_POTION) {
+        if (!i.isEnhanced()) {
             if (s.level().dimension() != p.level().dimension()) return false;
         }
 
@@ -198,4 +214,6 @@ public class ItemPotionReunion extends Item{
                     || otherTeam.isAlliedTo(p.getTeam());
         }
     }
+
+    public boolean isEnhanced() { return this.ENHANCED_POTION; }
 }

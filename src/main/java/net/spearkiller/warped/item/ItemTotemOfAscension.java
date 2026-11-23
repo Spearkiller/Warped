@@ -1,6 +1,7 @@
 package net.spearkiller.warped.item;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -37,23 +38,18 @@ public class ItemTotemOfAscension extends Item implements ICurioItem {
 
     @Override
     public void appendHoverText(ItemStack pStack, Item.TooltipContext context, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.warped.item_totem_of_ascension.info").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
-        pTooltipComponents.add(Component.translatable("tooltip.warped.item_totem_of_ascension.info2").withStyle(ChatFormatting.AQUA, ChatFormatting.ITALIC));
+
+        if (Screen.hasShiftDown()){
+            pTooltipComponents.add(Component.translatable("tooltip.warped.item_totem_of_ascension.info").withStyle(ChatFormatting.ITALIC));
+            pTooltipComponents.add(Component.translatable("tooltip.warped.item_totem_of_ascension.info2").withStyle(ChatFormatting.ITALIC));
+        }
+        else {
+            pTooltipComponents.add(Component.translatable("tooltip.warped.generic_toolip.hold_shift").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
+        }
         super.appendHoverText(pStack, context, pTooltipComponents, pIsAdvanced);
     }
 
     public static void updateFlightStatus(ServerPlayer player, int duration){
-
-        //warped.getLogger().debug("Checking " + player + " for beacon flight");
-
-        //boolean hasTotem = isEquipped(player);
-        //warped.getLogger().debug("Equipped ring: " + hasRing);
-        //boolean inBeaconRange = Warped.BeaconFlightTracker.isPlayerInRange(player);
-        //warped.getLogger().debug("In range: " + inBeaconRange);
-
-        //boolean shouldHaveFlight = hasTotem && inBeaconRange;
-
-        //if (shouldHaveFlight) Warped.BeaconFlightTracker.flightEnabledPlayers.add(player.getUUID());
         if (isEquipped(player)) player.addEffect(new MobEffectInstance(ModEffects.ASCENSION, duration, 0, true, true));
     }
 

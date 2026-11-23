@@ -41,11 +41,10 @@ public class ItemAbyssalMirror extends AbstractMirror {
             pTooltipComponents.add(Component.translatable("tooltip.warped.abyssal_mirror.tooltip"));
             pTooltipComponents.add(Component.translatable("tooltip.warped.abyssal_mirror.tooltip2"));
             pTooltipComponents.add(Component.translatable("tooltip.warped.abyssal_mirror.tooltip_warnings").withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
-            super.appendHoverText(pStack, context, pTooltipComponents, pIsAdvanced);
         }
         else {
             pTooltipComponents.add(Component.translatable("tooltip.warped.generic_toolip.hold_shift").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
-            super.appendHoverText(pStack, context, pTooltipComponents, pIsAdvanced);
         }
+        super.appendHoverText(pStack, context, pTooltipComponents, pIsAdvanced);
     }
 }
