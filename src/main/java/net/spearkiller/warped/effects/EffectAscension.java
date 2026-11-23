@@ -27,17 +27,4 @@ public class EffectAscension extends MobEffect {
                 AttributeModifier.Operation.ADD_VALUE
                 );
     }
-
-
-    @Override
-    public void onMobRemoved(LivingEntity livingEntity, int amplifier, Entity.RemovalReason reason) {
-        super.onMobRemoved(livingEntity, amplifier, reason);
-
-        if (!(livingEntity instanceof ServerPlayer player)) return;
-
-        livingEntity.addEffect(new MobEffectInstance(
-                ModEffects.FALL_BREAK, -1, 0, false, false
-        ));
-
-    }
 }
