@@ -72,6 +72,8 @@
   "advancement.warped.withered_totem": "Ethereal Effigy",
   "advancement.warped.withered_totem.desc": "Acquire a Withered Totem from a Nether Fortress",
   "advancement.warped.totem_of_ascension": "Fly Me To The Moon",
-  "advancement.warped.totem_of_ascension.desc": "Restore a Withered Totem into an artifact of great power..."
+  "advancement.warped.totem_of_ascension.desc": "Restore a Withered Totem into an artifact of great power...",
 
+  "item.minecraft.potion.effect.ascension": "Potion of Ascension",
+  "item.minecraft.potion.effect.long_ascension": "Potion of Ascension"
 }

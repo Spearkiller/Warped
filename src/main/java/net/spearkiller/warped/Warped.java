@@ -20,6 +20,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.spearkiller.warped.effects.ModEffects;
+import net.spearkiller.warped.events.ModBrewingRecipes;
 import net.spearkiller.warped.item.ItemTotemOfAscension;
 import net.spearkiller.warped.item.ModCreativeTabs;
 import net.spearkiller.warped.item.ModItems;
@@ -79,7 +80,7 @@ public class Warped {
 
         ModLootModifier.register(modEventBus);
 
-
+        ModBrewingRecipes.POTIONS.register(modEventBus);
 
         //modEventBus.addListener(this::commonSetup);
 
