@@ -1,15 +1,15 @@
 {
   "entries": [
-    "warped:withered_totem_from_wither_skeletons",
-    "warped:withered_totem_from_nether_fortresses",
-    "warped:recall_potion_from_abandoned_mineshaft",
-    "warped:recall_potion_from_simple_dungeon",
-    "warped:recall_potion_from_stronghold_corridor",
-    "warped:recall_potion_from_stronghold_crossing",
-    "warped:greater_recall_potion_from_end_city",
-    "warped:ascension_potion_from_end_city",
-    "warped:tarnished_mirror_from_trail_ruins",
-    "warped:tarnished_mirror_from_ocean_ruin"
+    "warpedrelics:withered_totem_from_wither_skeletons",
+    "warpedrelics:withered_totem_from_nether_fortresses",
+    "warpedrelics:recall_potion_from_abandoned_mineshaft",
+    "warpedrelics:recall_potion_from_simple_dungeon",
+    "warpedrelics:recall_potion_from_stronghold_corridor",
+    "warpedrelics:recall_potion_from_stronghold_crossing",
+    "warpedrelics:greater_recall_potion_from_end_city",
+    "warpedrelics:ascension_potion_from_end_city",
+    "warpedrelics:tarnished_mirror_from_trail_ruins",
+    "warpedrelics:tarnished_mirror_from_ocean_ruin"
   ],
   "replace": false
 }

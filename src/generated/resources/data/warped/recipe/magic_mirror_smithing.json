@@ -4,11 +4,11 @@
     "item": "minecraft:ghast_tear"
   },
   "base": {
-    "item": "warped:tarnished_mirror"
+    "item": "warpedrelics:tarnished_mirror"
   },
   "result": {
     "count": 1,
-    "id": "warped:magic_mirror"
+    "id": "warpedrelics:magic_mirror"
   },
   "template": {
     "item": "minecraft:diamond"

@@ -1,0 +1,79 @@
+{
+
+  "item.warpedrelics.tarnished_mirror": "Tarnished Mirror",
+  "item.warpedrelics.magic_mirror": "Magic Mirror",
+  "item.warpedrelics.celestial_mirror": "Celestial Mirror",
+  "item.warpedrelics.abyssal_mirror": "Abyssal Mirror",
+
+  "item.warpedrelics.potion_recall_lesser": "Potion of Recall",
+  "item.warpedrelics.potion_recall_greater": "Greater Potion of Recall",
+  "item.warpedrelics.potion_reunion_lesser": "Potion of Reunion",
+  "item.warpedrelics.potion_reunion_greater": "Greater Potion of Reunion",
+
+  "item.warpedrelics.totem_of_ascension": "Totem of Ascension",
+  "item.warpedrelics.withered_totem": "Withered Totem",
+
+  "effect.warpedrelics.fall_break": "Fall Break",
+  "effect.warpedrelics.warp_sickness": "Warp Sickness",
+  "effect.warpedrelics.ascension": "Ascension",
+
+  "creativetab.warpedrelics_items": "Warped Relics",
+
+  "tooltip.warpedrelics.magic_mirror.tooltip": "Teleports the player to their spawn point",
+  "tooltip.warpedrelics.magic_mirror.tooltip2": "Costs 1 level for every %1$s %2$s, max of %3$s %4$s",
+  "tooltip.warpedrelics.magic_mirror.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point",
+
+  "tooltip.warpedrelics.celestial_mirror.tooltip": "Teleports the player to their spawn point",
+  "tooltip.warpedrelics.celestial_mirror.tooltip2": "Costs 1 level for every %1$s %2$s, max of %3$s %4$s",
+  "tooltip.warpedrelics.celestial_mirror.tooltip3": "Costs %1$s %2$s for travelling across dimensions",
+  "tooltip.warpedrelics.celestial_mirror.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point",
+
+  "tooltip.warpedrelics.abyssal_mirror.tooltip": "Teleports the player to their spawn point",
+  "tooltip.warpedrelics.abyssal_mirror.tooltip2": "Costs no XP to use",
+  "tooltip.warpedrelics.abyssal_mirror.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point",
+
+  "tooltip.warpedrelics.potion_recall.tooltip_info": "Teleports the player to their spawn point",
+  "tooltip.warpedrelics.potion_recall.tooltip_warnings": "Cannot be used if the player hasn't set their spawn point",
+
+  "tooltip.warpedrelics.potion_reunion.tooltip_info": "Teleports the player to another player of their choice",
+  "tooltip.warpedrelics.potion_reunion.tooltip_info2": "Crouch + right click to select player",
+
+  "tooltip.warpedrelics.item_totem_of_ascension.info": "Grants the player flight when within range of a beacon",
+  "tooltip.warpedrelics.item_totem_of_ascension.info2": "Higher level beacons have a greater range",
+
+  "tooltip.warpedrelics.generic_toolip.hold_shift": "Hold SHIFT for more information",
+  "tooltip.warpedrelics.generic_toolip.inflicts_warp_sickness": "Inflicts Warp Sickness when used.",
+  "tooltip.warpedrelics.generic_toolip.no_interdimensional_travel": "Cannot be used across dimensions.",
+
+  "info.warpedrelics.potion_recall.missing_or_invalid_spawn_point": "You tried to remember where home was, but you couldn't quite place it...",
+  "info.warpedrelics.potion_recall.wrong_dimension": "You tried to remember home, but it seemed too far away...",
+  "info.warpedrelics.potion_reunion.forever_alone": "There didn't seem to be anyone around...",
+  "info.warpedrelics.potion_reunion.next_player": "Target set to %1$s (%2$s/%3$s)",
+  "info.warpedrelics.potion_reunion.missing_player": "You tried thinking of someone, but they seemed so far away...",
+  "info.warpedrelics.potion_reunion.no_player": "You blindly drank the potion without thinking about another person...",
+  "info.warpedrelics.potion_discord.failed_tp": "You braced yourself, but nothing happened...?",
+
+  "info.warpedrelics.potions.use_cancelled_by_warp_sickness": "You tried drinking the potion, but the smell made your stomach churn...",
+
+  "info.warpedrelics.mirrors.missing_or_invalid_spawn_point" : "You gazed into the mirror, but there was nothing on the other side...",
+  "info.warpedrelics.mirrors.wrong_dimension" : "You gazed into the mirror, but you couldn't see home...",
+  "info.warpedrelics.mirrors.insufficient_levels" : "You gazed into the mirror, but the reflection seemed distant...",
+  "info.warpedrelics.mirrors.use_cancelled_by_damage": "You gazed into the mirror, but your focus was interrupted!",
+  "info.warpedrelics.mirrors.use_cancelled_by_warp_sickness": "You tried gazing into the mirror, but you felt light-headed...",
+
+  "advancement.warpedrelics.tarnished_mirror": "Mirror, Mirror",
+  "advancement.warpedrelics.tarnished_mirror.desc": "Find a Tarnished Mirror in a Trail or Cold Ocean Ruin",
+  "advancement.warpedrelics.magic_mirror": "Upon Reflection...",
+  "advancement.warpedrelics.magic_mirror.desc": "Restore a Tarnished Mirror",
+  "advancement.warpedrelics.celestial_mirror": "Seeing Stars",
+  "advancement.warpedrelics.celestial_mirror.desc": "Upgrade a Magic Mirror into a Celestial Mirror",
+  "advancement.warpedrelics.abyssal_mirror": "It Stares Back...",
+  "advancement.warpedrelics.abyssal_mirror.desc": "Upgrade a Celesital Mirror into an Abyssal Mirror",
+  "advancement.warpedrelics.withered_totem": "Ethereal Effigy",
+  "advancement.warpedrelics.withered_totem.desc": "Acquire a Withered Totem from a Nether Fortress",
+  "advancement.warpedrelics.totem_of_ascension": "Fly Me To The Moon",
+  "advancement.warpedrelics.totem_of_ascension.desc": "Restore a Withered Totem into an artifact of great power...",
+
+  "item.minecraft.potion.effect.ascension": "Potion of Ascension",
+  "item.minecraft.potion.effect.long_ascension": "Potion of Ascension"
+}

@@ -4,11 +4,11 @@
     "item": "minecraft:echo_shard"
   },
   "base": {
-    "item": "warped:celestial_mirror"
+    "item": "warpedrelics:celestial_mirror"
   },
   "result": {
     "count": 1,
-    "id": "warped:abyssal_mirror"
+    "id": "warpedrelics:abyssal_mirror"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

@@ -1,0 +1,34 @@
+{
+  "parent": "warpedrelics:get_celestial_mirror",
+  "criteria": {
+    "warpedrelics:has_abyssal_mirror": {
+      "conditions": {
+        "items": [
+          {
+            "items": "warpedrelics:abyssal_mirror"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.warpedrelics.abyssal_mirror.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "warpedrelics:abyssal_mirror"
+    },
+    "title": {
+      "translate": "advancement.warpedrelics.abyssal_mirror"
+    }
+  },
+  "requirements": [
+    [
+      "warpedrelics:has_abyssal_mirror"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

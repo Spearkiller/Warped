@@ -4,11 +4,11 @@
     "item": "minecraft:netherite_ingot"
   },
   "base": {
-    "item": "warped:withered_totem"
+    "item": "warpedrelics:withered_totem"
   },
   "result": {
     "count": 1,
-    "id": "warped:totem_of_ascension"
+    "id": "warpedrelics:totem_of_ascension"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"
